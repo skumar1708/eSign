@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+	<script src="js/swal.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/swal.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" href="css/bs.css">
+	<style>
+		body {
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+		#sig-canvas {
+			border: 2px dotted #CCCCCC;
+			border-radius: 5px;
+			cursor: crosshair;
+		}
+		#sig-dataUrl {
+			width: 100%;
+		}
+	</style>
+    <title>e Signature</title>
+</head>
+
+<body>
+<img class="toggle" src="img/menu.png" onclick="toggle_sidebar()" style="position: fixed; right: 10px; top: 10px" />
+        <div id="sidebar" style="z-index:100;position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: black; transition: all 0.5s ease-in-out;color:#fff">
+            <h4>Item 1<h4>
+			<h4>Item 2<h4>
+			<h4>Item 3<h4>
+			<h4>Item 4<h4>
+        </div>
+   <div class="container" onclick="hide_sidebar()">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>E-Signature</h1>
+				<p>Sign in the canvas below and save your signature as an image!</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+		 		<canvas id="sig-canvas" width="620" height="160">
+		 			Get a better browser, bro.
+		 		</canvas>
+		 	</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<button class="btn btn-primary" id="sig-submitBtn">Submit Signature</button>
+				<button class="btn btn-default" id="sig-clearBtn">Clear Signature</button>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-md-12">
+				<textarea id="sig-dataUrl" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-md-12">
+				<img id="sig-image" src="" alt="Your signature will go here!"/>
+			</div>
+		</div>
+	</div>
+    <!-- <script type="text/javascript" src="cordova.js"></script> -->
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+		//localStorage.removeItem('getfirst')
+		localStorage.clear();
+		 swal("Hii");
+    </script>
+	<!-- Scripts -->
+	<script src="js/jq.js"></script>
+	<script src="js/bs.js"></script>
+	<script src="js/signature.js"></script>
+	
+	<script>
+        function toggle_sidebar()
+        {
+            var sidebar = document.getElementById("sidebar");
+            
+            console.log(sidebar.style.left);
+            
+            if(sidebar.style.left == "-200px")
+            {
+                sidebar.style.left = "0px";
+            }
+            else
+            {
+                sidebar.style.left = "-200px";
+            }
+        }
+		
+		function hide_sidebar()
+        {
+            var sidebar = document.getElementById("sidebar");
+            
+            
+            if(sidebar.style.left == "0px")
+            {
+                sidebar.style.left = "-200px";
+            }
+        }
+    </script>
+</body>
+
+</html>
