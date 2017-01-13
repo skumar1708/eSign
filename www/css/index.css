@@ -155,3 +155,16 @@ body {
 .slideout-open .slideout-menu {
   display: block;
 }
+
+#sidebar{
+	z-index:100;
+	position: fixed;
+	display: inline-block;
+	top: 0px;
+	height: 100%;
+	width: 200px;
+	left: -200px;
+	background-color: black;
+	transition: all 0.5s ease-in-out;
+	color:#fff;
+}
