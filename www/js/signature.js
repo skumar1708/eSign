@@ -50,15 +50,35 @@
 				submitBtn.href = document.getElementById('sig-canvas').toDataURL();
 				submitBtn.download = inputValue;
 			}); */
-			downloadCanvas(dataUrl);
+		//	downloadCanvas(dataUrl);
+	/* 		var url = 'https://cordova.apache.org';
+   var target = '_blank';
+   var options = "location=yes"
+   var ref = cordova.InAppBrowser.open(dataUrl, target, options);
+   var codes = "document.write('<a  href="+dataUrl+" download=test.png>";
+			ref.executeScript({
+            code: codes+"Download</a>');"
+        }, function() {
+            ;
+        }); */
 		
-	}, true);
+		window.canvas2ImagePlugin.saveImageDataToLibrary(
+        function(msg){
+            alert(msg);
+        },
+        function(err){
+            alert(err);
+        },
+        canvas
+    );
+		
+	});
 	function downloadCanvas(durl) {
 		
 			var fileTransfer = new FileTransfer();
 		    var uri = durl;
 			console.log(uri)
-   var fileURL =  "///storage/emulated/0/Downloads/myFile";
+			var fileURL =  "///storage/emulated/0/Downloads/myFile";
 
 		   fileTransfer.download(
 			  uri, fileURL, function(entry) {
@@ -71,7 +91,7 @@
 				 console.log("download error code" + error.code);
 			  },
 				
-			  false, {
+			  true, {
 				 headers: {
 					"Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
 				 }
