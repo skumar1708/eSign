@@ -17,6 +17,8 @@
 	var ctx = canvas.getContext("2d");
 	ctx.strokeStyle = "#222222";
 	ctx.lineWith = 2;
+	ctx.fillStyle = "#117fc2";
+	ctx.fillRect(0,0,canvas.width,canvas.height);
 
 	// Set up the UI
 	var sigText = document.getElementById("sig-dataUrl");
@@ -36,67 +38,20 @@
 		if('' != sigItem && null != sigItem){alert(sigItem)}else if(null == sigItem){return;}else{sigItem = prompt('please enter a name then click OK');}
 		 */
 		//navigator.notification.confirm("Are you sure you want to exit ?",onConfirm, "Confirmation", "Yes,No");
-		/* swal({
-			  title: "An input!",
-			  text: 'Filename:',
-			  type: 'input',
-			  showCancelButton: true,
-			  closeOnConfirm: true,
-			  animation: "slide-from-top"
-			}, function(inputValue){
-			  //console.log("You wrote", inputValue);
-			  // downloadCanvas(submitBtn, 'sig-canvas', inputValue);
-			  console.log("linkit  ",submitBtn);
-				submitBtn.href = document.getElementById('sig-canvas').toDataURL();
-				submitBtn.download = inputValue;
-			}); */
-		//	downloadCanvas(dataUrl);
-	/* 		var url = 'https://cordova.apache.org';
-   var target = '_blank';
-   var options = "location=yes"
-   var ref = cordova.InAppBrowser.open(dataUrl, target, options);
-   var codes = "document.write('<a  href="+dataUrl+" download=test.png>";
-			ref.executeScript({
-            code: codes+"Download</a>');"
-        }, function() {
-            ;
-        }); */
-		
-		window.canvas2ImagePlugin.saveImageDataToLibrary(
-        function(msg){
-            alert(msg);
-        },
-        function(err){
-            alert(err);
-        },
-        canvas
-    );
-		
+		 
+		downloadCanvas(canvas);
+	
 	});
-	function downloadCanvas(durl) {
-		
-			var fileTransfer = new FileTransfer();
-		    var uri = durl;
-			console.log(uri)
-			var fileURL =  "///storage/emulated/0/Downloads/myFile";
-
-		   fileTransfer.download(
-			  uri, fileURL, function(entry) {
-				 console.log("download complete: " + entry.toURL());
-			  },
-				
-			  function(error) {
-				 console.log("download error source " + error.source);
-				 console.log("download error target " + error.target);
-				 console.log("download error code" + error.code);
-			  },
-				
-			  true, {
-				 headers: {
-					"Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-				 }
-			  }
-		   );
+	function downloadCanvas(canvas) {
+				window.canvas2ImagePlugin.saveImageDataToLibrary(
+					function(msg){
+						swal("Done","Image saved in "+msg,"success");
+					},
+					function(err){
+						alert("Error "+err);
+					},
+					canvas
+			);
 		
 	}
 	function onConfirm(button) {
