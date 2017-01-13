@@ -43,6 +43,7 @@
 	<script src="js/swal.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/swal.css">
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link href="css/glyphs.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/bs.css">
 	<style>
 		body {
@@ -63,7 +64,7 @@
 
 <body>
 <img class="toggle" src="img/menu.png" onclick="toggle_sidebar()" style="position: fixed; right: 10px; top: 10px" />
-        <div id="sidebar" style="z-index:100;position: fixed; display: inline-block; top: 0px; height: 100%; width: 200px; left: -200px; background-color: black; transition: all 0.5s ease-in-out;color:#fff">
+        <div id="sidebar">
             <h4>Item 1<h4>
 			<h4>Item 2<h4>
 			<h4>Item 3<h4>
@@ -78,15 +79,15 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-		 		<canvas id="sig-canvas" width="620" height="160">
+		 		<canvas id="sig-canvas" width="320" height="160">
 		 			Get a better browser, bro.
 		 		</canvas>
 		 	</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<button class="btn btn-primary" id="sig-submitBtn">Submit Signature</button>
-				<button class="btn btn-default" id="sig-clearBtn">Clear Signature</button>
+				<a class="btn btn-primary" id="sig-submitBtn"></span>Download</a>
+				<button class="btn btn-default" id="sig-clearBtn">Clear</button>
 			</div>
 		</div>
 		<br/>
@@ -107,8 +108,8 @@
     <script type="text/javascript">
         app.initialize();
 		//localStorage.removeItem('getfirst')
-		localStorage.clear();
-		 swal("Hii");
+		//localStorage.clear();
+		 //swal("Hii");
     </script>
 	<!-- Scripts -->
 	<script src="js/jq.js"></script>
