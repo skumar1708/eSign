@@ -30,14 +30,34 @@
 	}, false);
 	submitBtn.addEventListener("click", function (e) {
 		var dataUrl = canvas.toDataURL();
-		sigText.innerHTML = dataUrl;
-		sigImage.setAttribute("src", dataUrl);
+		//sigText.innerHTML = dataUrl;
+		//sigImage.setAttribute("src", dataUrl);
 		/* var sigItem = prompt('Enter name');
 		if('' != sigItem && null != sigItem){alert(sigItem)}else if(null == sigItem){return;}else{sigItem = prompt('please enter a name then click OK');}
 		 */
-		navigator.notification.confirm("Are you sure you want to exit ?",onConfirm, "Confirmation", "Yes,No");
+		//navigator.notification.confirm("Are you sure you want to exit ?",onConfirm, "Confirmation", "Yes,No");
+		/* swal({
+			  title: "An input!",
+			  text: 'Filename:',
+			  type: 'input',
+			  showCancelButton: true,
+			  closeOnConfirm: true,
+			  animation: "slide-from-top"
+			}, function(inputValue){
+			  //console.log("You wrote", inputValue);
+			  // downloadCanvas(submitBtn, 'sig-canvas', inputValue);
+			  console.log("linkit  ",submitBtn);
+				submitBtn.href = document.getElementById('sig-canvas').toDataURL();
+				submitBtn.download = inputValue;
+			}); */
+			downloadCanvas(this, 'sig-canvas', 'test.png');
 		
 	}, false);
+	function downloadCanvas(linkit, canvasId, filename) {
+		//console.log("linkit  ",linkit);
+		linkit.href = document.getElementById(canvasId).toDataURL();
+		linkit.download = filename;
+	}
 	function onConfirm(button) {
 		alert('inside confirm');
 	}
