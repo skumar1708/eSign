@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Hello World</name>
+<widget id="com.jyoshdevelopers.esign" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>eSign</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        E Signature for remote usage on documents.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        Shravan Sharma
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
