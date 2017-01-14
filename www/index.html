@@ -41,6 +41,7 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 	<script src="js/swal.js"></script>
+	<script src="js/jscolor.js"></script>
 	<script src="js/reimg.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/swal.css">
     <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -63,35 +64,58 @@
     <title>e Signature</title>
 </head>
 
-<body>
-<img class="toggle" src="img/menu.png" onclick="toggle_sidebar()" style="position: fixed; right: 10px; top: 10px" />
+<body style="">
+<!-- <img class="toggle" src="img/menu.png" onclick="toggle_sidebar()" style="position: fixed; right: 10px; top: 10px" />
         <div id="sidebar">
             <h4>Item 1<h4>
 			<h4>Item 2<h4>
 			<h4>Item 3<h4>
 			<h4>Item 4<h4>
-        </div>
-   <div class="container" onclick="hide_sidebar()">
-		<div class="row">
+        </div> -->
+   <div class="container">
+		<!-- <div class="row">
 			<div class="col-md-12">
 				<h1>E-Signature</h1>
 				<p>Sign in the canvas below and save your signature as an image!</p>
 			</div>
-		</div>
+		</div> -->
 		<div class="row">
 			<div class="col-md-12">
-		 		<canvas id="sig-canvas" width="320" height="160" style="background-color:#fff;">
+		 		<canvas id="sig-canvas" width="560" height="260">
 		 			Get a better browser, bro.
 		 		</canvas>
 		 	</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<a class="btn btn-primary" id="sig-submitBtn"></span>Download</a>
-				<button class="btn btn-default" id="sig-clearBtn">Clear</button>
+				<!-- <a class="btn btn-primary" id="sig-submitBtn">Download</a> -->
+				<input type="image" class="btn btn-default" src="img/save.png" id="sig-submitBtn" style="border:2px solid grey;">
+				<!-- <button class="btn btn-default" id="sig-clearBtn">Clear</button> -->
+				
+				<input type="image" class="btn btn-default" src="img/clear.png" id="sig-clearBtn" style="border:2px solid grey;">
+				<!-- <button id="tButton"
+					class="btn btn-default jscolor {valueElement:'valueInput',value:'#ffffff',styleElement:'valueInput'}"
+					style="border:2px solid black">
+					<img  src="img/pen.png" onclick="return false;">
+				</button> -->
+				
+				<input type="image" src="img/can.png" id="tButton"
+					class="btn btn-default jscolor {valueElement:'valueInput',value:'#ffffff',styleElement:'valueInput'}"
+					style="border:2px solid grey;">
+			<!-- <input type="image" src="img/pen.png" class="btn btn-default jscolor {onFineChange:'updateCanvasColor(this)'}"> -->
+				
+				
+				<input type="image" src="img/pen.png" id="penButton"
+					class="btn btn-default jscolor {valueElement:'penInput',styleElement:'penInput'}"
+					style="border-right:5px solid black;border-top:2px solid black;">
+				
+					<!-- <img  src="img/pen.png"> -->
+				<!-- <button class="btn btn-default" id="erase">Eraser</button> -->
 			</div>
 		</div>
-		<br/>
+		<input id="valueInput" style="visibility:hidden;height:0px;width:0px;">
+		<input id="penInput" style="visibility:hidden;height:0px;width:0px;">
+		<!-- <br/>
 		<div class="row">
 			<div class="col-md-12">
 				<textarea id="sig-dataUrl" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
@@ -102,7 +126,7 @@
 			<div class="col-md-12">
 				<img id="sig-image" src="" alt="Your signature will go here!"/>
 			</div>
-		</div>
+		</div> -->
 	</div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
@@ -134,16 +158,16 @@
             }
         }
 		
-		function hide_sidebar()
-        {
-            var sidebar = document.getElementById("sidebar");
+		//function hide_sidebar()
+       // {
+       //     var sidebar = document.getElementById("sidebar");
             
             
-            if(sidebar.style.left == "0px")
-            {
-                sidebar.style.left = "-200px";
-            }
-        }
+       //     if(sidebar.style.left == "0px")
+      //      {
+                //sidebar.style.left = "-200px";
+      //      }
+      //  }
     </script>
 </body>
 
