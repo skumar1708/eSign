@@ -168,3 +168,11 @@ body {
 	transition: all 0.5s ease-in-out;
 	color:#fff;
 }
+#rsContainer{
+	width:100px;
+	display: block;
+  max-width: 20px;
+  margin: -179px 202px;;
+  /* padding: 2em 3em; */
+  border-radius: 4px;
+}
