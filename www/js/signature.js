@@ -15,9 +15,12 @@
 	// Set up the canvas
 	var canvas = document.getElementById("sig-canvas");
 	var ctx = canvas.getContext("2d");
+	  ctx.lineJoin = ctx.lineCap = 'round';
+	  ctx.shadowBlur = 1;
+	  ctx.shadowColor = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = "#222222";
-	ctx.lineWith = 2;
-	ctx.fillStyle = "#117fc2";
+	ctx.lineWith = 1;
+	ctx.fillStyle = "#ffffff";
 	ctx.fillRect(0,0,canvas.width,canvas.height);
 
 	// Set up the UI
@@ -143,6 +146,41 @@
 
 	function clearCanvas() {
 		canvas.width = canvas.width;
+		var ctx = canvas.getContext("2d");
+		ctx.strokeStyle = "#222222";
+		ctx.lineWith = 2;
+		ctx.fillStyle = $('#valueInput').css('background-color');
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+	}
+	
+	document.getElementById('valueInput').addEventListener('onchange',function(){alert('value changed');});
+	
+	
+	$("#valueInput").change(function(){
+			updateCanvasColor($(this).css('background-color'));
+		});
+	function updateCanvasColor(jscolor) {
+		//canvas.width = canvas.width;
+		var ctx = canvas.getContext("2d");
+		//ctx.strokeStyle = "#222222";
+		ctx.lineWith = 2;
+		ctx.fillStyle = jscolor;
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+		$('#tButton').css('background-color',jscolor);
+	}
+	
+		$("#penInput").change(function(){
+			updatePenColor($(this).css('background-color'));
+		});
+	function updatePenColor(pencolor) {
+		//canvas.width = canvas.width;
+		//var ctx = canvas.getContext("2d");
+		//ctx.beginPath();
+		ctx.strokeStyle = pencolor;
+		ctx.lineWith = 2;
+		//ctx.fillStyle = jscolor;
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+		$('#penButton').attr('style','border-right:5px solid '+pencolor+';border-top:2px solid '+pencolor+';');
 	}
 
 	// Allow for animation
