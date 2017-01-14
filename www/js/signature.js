@@ -12,14 +12,17 @@
 					};
 	})();
 
+	
 	// Set up the canvas
+	
 	var canvas = document.getElementById("sig-canvas");
+	var lineWidth =  2;
 	var ctx = canvas.getContext("2d");
-	  ctx.lineJoin = ctx.lineCap = 'round';
+	 ctx.lineJoin = ctx.lineCap = 'round';
 	  ctx.shadowBlur = 1;
-	  ctx.shadowColor = 'rgb(0, 0, 0)';
+	  ctx.shadowColor = '#222222';
 	ctx.strokeStyle = "#222222";
-	ctx.lineWith = 1;
+	ctx.lineWidth = lineWidth;
 	ctx.fillStyle = "#ffffff";
 	ctx.fillRect(0,0,canvas.width,canvas.height);
 
@@ -28,10 +31,11 @@
 	var sigImage = document.getElementById("sig-image");
 	var clearBtn = document.getElementById("sig-clearBtn");
 	var submitBtn = document.getElementById("sig-submitBtn");
+	
 	clearBtn.addEventListener("click", function (e) {
 		clearCanvas();
-		sigText.innerHTML = "Data URL for your signature will go here!";
-		sigImage.setAttribute("src", "");
+		/* sigText.innerHTML = "Data URL for your signature will go here!";
+		sigImage.setAttribute("src", ""); */
 	}, false);
 	submitBtn.addEventListener("click", function (e) {
 		var dataUrl = canvas.toDataURL();
@@ -147,29 +151,46 @@
 	function clearCanvas() {
 		canvas.width = canvas.width;
 		var ctx = canvas.getContext("2d");
-		ctx.strokeStyle = "#222222";
-		ctx.lineWith = 2;
-		ctx.fillStyle = $('#valueInput').css('background-color');
+		ctx.strokeStyle = $('#penButton').css('background-color');
+		ctx.lineWith = lineWidth;
+		ctx.fillStyle = $('#tButton').css('background-color');
 		ctx.fillRect(0,0,canvas.width,canvas.height);
 	}
 	
 	document.getElementById('valueInput').addEventListener('onchange',function(){alert('value changed');});
 	
+	var $element = $('input[type="range"]');
+		$element
+		  .rangeslider({
+			polyfill: false,
+			onInit: function() {
+			  updateOutput(this.value);
+			}
+		  })
+		  .on('input', function() {
+			updateOutput(this.value);
+		  });
+	function updateOutput(val) {
+		  console.log('*****',val);
+		  lineWidth = val;
+		  ctx.lineWidth = lineWidth;
+		}
 	
-	$("#valueInput").change(function(){
+	$("#tButton").change(function(){
 			updateCanvasColor($(this).css('background-color'));
 		});
 	function updateCanvasColor(jscolor) {
 		//canvas.width = canvas.width;
+		console.log(jscolor);
 		var ctx = canvas.getContext("2d");
 		//ctx.strokeStyle = "#222222";
-		ctx.lineWith = 2;
+		ctx.lineWith = lineWidth;
 		ctx.fillStyle = jscolor;
 		ctx.fillRect(0,0,canvas.width,canvas.height);
 		$('#tButton').css('background-color',jscolor);
 	}
 	
-		$("#penInput").change(function(){
+		$("#penButton").change(function(){
 			updatePenColor($(this).css('background-color'));
 		});
 	function updatePenColor(pencolor) {
@@ -177,10 +198,10 @@
 		//var ctx = canvas.getContext("2d");
 		//ctx.beginPath();
 		ctx.strokeStyle = pencolor;
-		ctx.lineWith = 2;
+		ctx.lineWith = lineWidth;
+		 ctx.shadowColor = pencolor;
 		//ctx.fillStyle = jscolor;
 		ctx.fillRect(0,0,canvas.width,canvas.height);
-		$('#penButton').attr('style','border-right:5px solid '+pencolor+';border-top:2px solid '+pencolor+';');
 	}
 
 	// Allow for animation
