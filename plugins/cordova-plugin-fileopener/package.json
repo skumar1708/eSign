@@ -9,8 +9,8 @@
     ]
   },
   "repository": {
-    "type": "",
-    "url": ""
+    "type": "git",
+    "url": "git+https://github.com/skumar1708/fileopener"
   },
   "keywords": [
     "canvas",
