@@ -1,0 +1,40 @@
+{
+  "name": "cordova-plugin-fileopener",
+  "version": "0.7.0",
+  "description": "This plugin allows you to open files from local.",
+  "cordova": {
+    "id": "cordova-plugin-fileopener",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [
+    "canvas",
+    "image",
+    "photo library",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android",
+    "cordova-wp8"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": {
+    "name": "Shravan",
+    "email": "",
+    "url": ""
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}

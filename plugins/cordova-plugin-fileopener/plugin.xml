@@ -1,0 +1,42 @@
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-fileopener"
+    version="0.7.0">
+
+    <name>File Opener</name>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <description>This plugin allows you to open files from local.</description>
+    <author>Shravan</author>
+    <keywords>canvas,image,photo library</keywords>
+
+    <license>MIT</license>
+
+    <js-module src="www/fileopener.js" name="FileOpener">
+        <clobbers target="window.fileOpenerPlugin" />
+    </js-module>
+
+   
+
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+          <feature name="FileOpenerPlugin" >
+            <param name="android-package" value="com.phonegap.plugins.fileopener.FileOpenerPlugin"/>
+          </feature>
+        </config-file>
+
+        <source-file src="src/android/FileOpenerPlugin.java" 
+            target-dir="src/com/phonegap/plugins/fileopener" />
+
+    </platform>
+
+</plugin>
