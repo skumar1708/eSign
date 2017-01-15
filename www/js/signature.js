@@ -17,14 +17,17 @@
 	
 	var canvas = document.getElementById("sig-canvas");
 	var lineWidth =  2;
+	var dataURL = '';
 	var ctx = canvas.getContext("2d");
-	 ctx.lineJoin = ctx.lineCap = 'round';
+	/*  ctx.lineJoin = ctx.lineCap = 'round';
 	  ctx.shadowBlur = 1;
-	  ctx.shadowColor = '#222222';
+	  ctx.shadowColor = '#222222'; */
 	ctx.strokeStyle = "#222222";
 	ctx.lineWidth = lineWidth;
 	ctx.fillStyle = "#ffffff";
 	ctx.fillRect(0,0,canvas.width,canvas.height);
+	 ctx.globalCompositeOperation = 'source-over';
+	 ctx.stroke();
 
 	// Set up the UI
 	var sigText = document.getElementById("sig-dataUrl");
@@ -141,6 +144,7 @@
 	// Draw to the canvas
 	function renderCanvas() {
 		if (drawing) {
+			ctx.globalCompositeOperation = 'source-over';
 			ctx.moveTo(lastPos.x, lastPos.y);
 			ctx.lineTo(mousePos.x, mousePos.y);
 			ctx.stroke();
@@ -150,7 +154,7 @@
 
 	function clearCanvas() {
 		canvas.width = canvas.width;
-		var ctx = canvas.getContext("2d");
+		ctx = canvas.getContext("2d");
 		ctx.strokeStyle = $('#penButton').css('background-color');
 		ctx.lineWith = lineWidth;
 		ctx.fillStyle = $('#tButton').css('background-color');
@@ -182,27 +186,36 @@
 	function updateCanvasColor(jscolor) {
 		//canvas.width = canvas.width;
 		console.log(jscolor);
-		var ctx = canvas.getContext("2d");
+		ctx = canvas.getContext("2d");
 		//ctx.strokeStyle = "#222222";
-		ctx.lineWith = lineWidth;
+		ctx.lineWidth = lineWidth;
 		ctx.fillStyle = jscolor;
 		ctx.fillRect(0,0,canvas.width,canvas.height);
 		$('#tButton').css('background-color',jscolor);
 	}
-	
 		$("#penButton").change(function(){
+			
 			updatePenColor($(this).css('background-color'));
 		});
 	function updatePenColor(pencolor) {
 		//canvas.width = canvas.width;
 		//var ctx = canvas.getContext("2d");
 		//ctx.beginPath();
+
 		ctx.strokeStyle = pencolor;
-		ctx.lineWith = lineWidth;
+		ctx.lineWidth = lineWidth;
 		 ctx.shadowColor = pencolor;
 		//ctx.fillStyle = jscolor;
-		ctx.fillRect(0,0,canvas.width,canvas.height);
+		//ctx.fillRect(0,0,canvas.width,canvas.height);
 	}
+	
+	$('#erase').on('click',function(){
+		/* ctx.globalCompositeOperation = 'destination-out';
+		ctx.fillStyle = $('#tButton').css('background-color');
+		ctx.strokeStyle = $('#tButton').css('background-color');
+		ctx.lineWidth = 10; */
+		window.fileOpenerPlugin.open('/storage/000-7171/DCIM/Camera/IMG_20170115_152428500.JPG');
+	});
 
 	// Allow for animation
 	(function drawLoop () {
