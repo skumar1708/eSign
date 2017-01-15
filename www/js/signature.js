@@ -56,6 +56,21 @@
 				window.canvas2ImagePlugin.saveImageDataToLibrary(
 					function(msg){
 						swal("Done","Image saved in "+msg,"success");
+						
+						
+						swal({
+							  title: "Done",
+							  text: "Image saved in "+msg,
+							  type: "success",
+							  showCancelButton: true,
+							  confirmButtonColor: "#DD6B55",
+							  confirmButtonText: "Open",
+							  closeOnConfirm: true
+							},
+							function(){
+							  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+							  window.fileOpenerPlugin.open(msg);
+							});
 					},
 					function(err){
 						alert("Error "+err);
