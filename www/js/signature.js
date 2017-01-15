@@ -64,12 +64,13 @@
 							  type: "success",
 							  showCancelButton: true,
 							  confirmButtonColor: "#DD6B55",
-							  confirmButtonText: "Open",
+							  confirmButtonText: "OPEN",
+							  cancelButtonText: "OK",
 							  closeOnConfirm: true
 							},
 							function(){
 							  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
-							  window.fileOpenerPlugin.open(msg);
+							  window.open(canvas.toDataURL(),'_blank', 'location=yes');
 							});
 					},
 					function(err){
@@ -229,7 +230,21 @@
 		ctx.fillStyle = $('#tButton').css('background-color');
 		ctx.strokeStyle = $('#tButton').css('background-color');
 		ctx.lineWidth = 10; */
-		window.fileOpenerPlugin.open('/storage/000-7171/DCIM/Camera/IMG_20170115_152428500.JPG');
+		swal({
+							  title: "Done",
+							  text: "Image saved in ",
+							  type: "success",
+							  showCancelButton: true,
+							  confirmButtonColor: "#DD6B55",
+							  confirmButtonText: "Open",
+							  cancelButtonText:"OK",
+							  closeOnConfirm: true
+							},
+							function(){
+							  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+							 window.open(canvas.toDataURL(),'_blank', 'location=yes');
+							});
+		
 	});
 
 	// Allow for animation
