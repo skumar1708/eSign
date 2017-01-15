@@ -3,7 +3,7 @@
   "version": "0.7.0",
   "description": "This plugin allows you to open files from local.",
   "cordova": {
-    "id": "cordova-plugin-fileopener",
+    "id": "cordova.plugin.fileopener",
     "platforms": [
       "android"
     ]
