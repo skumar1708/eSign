@@ -34,6 +34,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		document.addEventListener("backbutton", onBackKeyDown, false);
 		 //screen.lockOrientation('landscape'); //this is the new line
     },
     // Update DOM on a Received Event
@@ -48,3 +49,7 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+    function onBackKeyDown(e) {
+		//e.preventDefault();
+		alert("back key presses!!");
+    }
