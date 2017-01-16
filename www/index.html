@@ -117,6 +117,7 @@
 				<input type="image" src="img/stroke.png" class="btn btn-default" id="stroke" style="border:2px solid grey;"> 
 				<input type="image" src="img/eraser.png" class="btn btn-default" id="erase" style="border:2px solid grey;"> 
 				 <input type="image" src="img/share.png" class="btn btn-default pull-right" id="share" style="border:2px solid grey;"> 
+				
 			</div>
 		</div>
 				<div id="rsContainer" style="display:none;">
@@ -151,6 +152,15 @@
 	<script src="js/signature.js"></script>
 	
 	<script>
+	$(document).bind('keydown', function(event) {
+		alert(event.keyCode);
+			  if (event.keyCode == 27) {
+				// Prevent default (disable the back button behavior)
+				event.preventDefault();
+
+				// Your code to show another page or whatever...
+			  }
+			});
 	$('#stroke').on('click',function(){
 		$('#rsContainer').toggle();
         
