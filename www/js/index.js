@@ -51,6 +51,6 @@ var app = {
     }
 };
     function onBackKeyDown(e) {
-		e.preventDefault();
+		//e.preventDefault();
 		alert("back key presses!!");
     }
