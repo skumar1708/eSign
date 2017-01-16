@@ -256,6 +256,7 @@
 		
 	});
 	$('#share').on('click',function(){
+		window.plugins.toast.show('Hello there!', 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
 		 var data = canvas.toDataURL("image/png");
 		  //var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
 		 // var decodedPng = Base64Binary.decode(encodedPng);
