@@ -11,7 +11,10 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
 	<preference name="orientation" value="landscape" />
+	<preference name="SplashScreen" value="screen" />
+	<preference name="SplashScreenDelay" value="3000" />
 	 <plugin name="cordova-plugin-canvas2image" source="npm" spec="~0.7.0" />
+	  <plugin name="cordova-plugin-x-socialsharing" source="npm" spec="5.1.1" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
