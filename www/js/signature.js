@@ -14,20 +14,22 @@
 
 	
 	// Set up the canvas
-	
+	var isDirty = false;
+	var tool = 'pencil';
+	var FILLSTYLE = "#ffffff";
+	var STROKESTYLE = "#222222";
 	var canvas = document.getElementById("sig-canvas");
 	var lineWidth =  2;
 	var dataURL = '';
 	var ctx = canvas.getContext("2d");
-	/*  ctx.lineJoin = ctx.lineCap = 'round';
-	  ctx.shadowBlur = 1;
-	  ctx.shadowColor = '#222222'; */
-	ctx.strokeStyle = "#222222";
+	ctx.lineJoin = ctx.lineCap = 'round';
+	  /*  ctx.shadowBlur = 1;
+	  ctx.shadowColor = '#222222';*/
+	ctx.strokeStyle = '#000';
 	ctx.lineWidth = lineWidth;
-	ctx.fillStyle = "#ffffff";
+	ctx.fillStyle = '#fff';
 	ctx.fillRect(0,0,canvas.width,canvas.height);
-	 ctx.globalCompositeOperation = 'source-over';
-	 ctx.stroke();
+	ctx.stroke();
 
 	// Set up the UI
 	var sigText = document.getElementById("sig-dataUrl");
@@ -44,10 +46,6 @@
 		var dataUrl = canvas.toDataURL();
 		//sigText.innerHTML = dataUrl;
 		//sigImage.setAttribute("src", dataUrl);
-		/* var sigItem = prompt('Enter name');
-		if('' != sigItem && null != sigItem){alert(sigItem)}else if(null == sigItem){return;}else{sigItem = prompt('please enter a name then click OK');}
-		 */
-		//navigator.notification.confirm("Are you sure you want to exit ?",onConfirm, "Confirmation", "Yes,No");
 		 
 		downloadCanvas(canvas);
 	
@@ -65,7 +63,7 @@
 							  showCancelButton: true,
 							  confirmButtonColor: "#DD6B55",
 							  confirmButtonText: "OPEN",
-							  cancelButtonText: "OK",
+							  cancelButtonText: "OPEN",
 							  closeOnConfirm: true
 							},
 							function(){
@@ -80,15 +78,12 @@
 			);
 		
 	}
-	function onConfirm(button) {
-		alert('inside confirm');
-	}
-
 	// Set up mouse events for drawing
 	var drawing = false;
 	var mousePos = { x:0, y:0 };
 	var lastPos = mousePos;
 	canvas.addEventListener("mousedown", function (e) {
+		isDirty = true;
 		drawing = true;
 		lastPos = getMousePos(canvas, e);
 	}, false);
@@ -159,25 +154,51 @@
 
 	// Draw to the canvas
 	function renderCanvas() {
+		//console.log('drawing is ', drawing);
 		if (drawing) {
-			ctx.globalCompositeOperation = 'source-over';
-			ctx.moveTo(lastPos.x, lastPos.y);
-			ctx.lineTo(mousePos.x, mousePos.y);
-			ctx.stroke();
-			lastPos = mousePos;
+			if(tool=='pencil'){
+				//console.log('drawing');
+				ctx.beginPath();
+				ctx.lineJoin = ctx.lineCap = 'round';
+				if(!isDirty){
+					ctx.strokeStyle = $('#penButton').css('background-color');
+				}
+				ctx.fillStyle = $('#tButton').css('background-color');
+				ctx.moveTo(lastPos.x, lastPos.y);
+				ctx.lineTo(mousePos.x, mousePos.y);
+				ctx.stroke();
+				lastPos = mousePos;
+				ctx.closePath();
+			}
+			else{
+				var mouseX = mousePos.x;
+				var	mouseY = mousePos.y;
+				
+				//console.log('mouseX '+mouseX,'mouseY '+mouseY);
+				
+				ctx.beginPath();
+				ctx.moveTo(mouseX, mouseY);
+				ctx.fillRect(mouseX,mouseY,20,20);
+				ctx.strokeStyle = $('#tButton').css('background-color');
+				ctx.fillStyle = $('#tButton').css('background-color');
+				ctx.closePath();
+			}
 		}
+		
 	}
 
 	function clearCanvas() {
 		canvas.width = canvas.width;
 		ctx = canvas.getContext("2d");
-		ctx.strokeStyle = $('#penButton').css('background-color');
-		ctx.lineWith = lineWidth;
+		if($('#tButton').css('background-color')=='rgb(255, 255, 255)'){
+			ctx.strokeStyle = '#000';
+		}else{ctx.strokeStyle = $('#penButton').css('background-color');}
+		ctx.lineWidth = lineWidth;
 		ctx.fillStyle = $('#tButton').css('background-color');
 		ctx.fillRect(0,0,canvas.width,canvas.height);
 	}
 	
-	document.getElementById('valueInput').addEventListener('onchange',function(){alert('value changed');});
+	//document.getElementById('valueInput').addEventListener('onchange',function(){alert('value changed');});
 	
 	var $element = $('input[type="range"]');
 		$element
@@ -200,57 +221,62 @@
 			updateCanvasColor($(this).css('background-color'));
 		});
 	function updateCanvasColor(jscolor) {
-		//canvas.width = canvas.width;
 		console.log(jscolor);
 		ctx = canvas.getContext("2d");
-		//ctx.strokeStyle = "#222222";
 		ctx.lineWidth = lineWidth;
 		ctx.fillStyle = jscolor;
+		ctx.strokeStyle = $('#penButton').css('background-color');
 		ctx.fillRect(0,0,canvas.width,canvas.height);
+		ctx.stroke();
 		$('#tButton').css('background-color',jscolor);
 	}
 		$("#penButton").change(function(){
-			
+			console.log('changing init');
 			updatePenColor($(this).css('background-color'));
 		});
+		$("#penButton").on('click',function(){
+			tool = 'pencil';
+		});
 	function updatePenColor(pencolor) {
-		//canvas.width = canvas.width;
-		//var ctx = canvas.getContext("2d");
-		//ctx.beginPath();
-
 		ctx.strokeStyle = pencolor;
 		ctx.lineWidth = lineWidth;
 		 ctx.shadowColor = pencolor;
-		//ctx.fillStyle = jscolor;
-		//ctx.fillRect(0,0,canvas.width,canvas.height);
 	}
 	
 	$('#erase').on('click',function(){
-		/* ctx.globalCompositeOperation = 'destination-out';
-		ctx.fillStyle = $('#tButton').css('background-color');
-		ctx.strokeStyle = $('#tButton').css('background-color');
-		ctx.lineWidth = 10; */
-		swal({
-							  title: "Done",
-							  text: "Image saved in ",
-							  type: "success",
-							  showCancelButton: true,
-							  confirmButtonColor: "#DD6B55",
-							  confirmButtonText: "Open",
-							  cancelButtonText:"OK",
-							  closeOnConfirm: true
-							},
-							function(){
-							  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
-							 window.open(canvas.toDataURL(),'_blank', 'location=yes');
-							});
+		tool = 'eraser';
+		/* canvas.removeEventListener('mousemove', null, false);
+		canvas.addEventListener('mousemove',function(e){
+		if(tool=='eraser'){
+				
+				
+				
+		}
+		}); */
 		
 	});
-
+	$('#share').on('click',function(){
+		 var data = canvas.toDataURL("image/png");
+		  //var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
+		 // var decodedPng = Base64Binary.decode(encodedPng);
+		window.plugins.socialsharing.share(
+			  "Share this app",
+			  "Share via",
+			  canvas.toDataURL("image/png")
+		  );
+	});
 	// Allow for animation
 	(function drawLoop () {
 		requestAnimFrame(drawLoop);
 		renderCanvas();
 	})();
-
+	(function(){
+		$('canvas').attr('width',$(window).width()-($(window).width()/15));
+		ctx.lineJoin = ctx.lineCap = 'round';
+		ctx.strokeStyle = STROKESTYLE;
+		ctx.lineWidth = lineWidth;
+		ctx.fillStyle = FILLSTYLE
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+		ctx.stroke();
+		})();
 })();
