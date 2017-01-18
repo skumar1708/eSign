@@ -37,7 +37,9 @@ var app = {
     onDeviceReady: function() {
 		swal('device is ready','Hurre','success');
 		db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
-		db.transaction(function(transaction) {
+		setTimeout(function(){
+			
+			db.transaction(function(transaction) {
 				transaction.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (id integer primary key, src blob, eid text)', [],
 				function(tx, result) {
 					alert("Table created successfully");
@@ -63,6 +65,8 @@ var app = {
 					alert("Error occurred while creating the table.");
 				});
 			});
+			
+		},2000);
 		/* navigator.Backbutton.goHome(function() {
 		 swal("Great","Exititing","Success");
 		}, function() {
