@@ -37,7 +37,22 @@ var app = {
     onDeviceReady: function() {
 		swal('device is ready','Hurre','success');
 		db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
-		
+		db.transaction(function(transaction) {
+				transaction.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (id integer primary key, src text, eid text)', [],
+				function(tx, result) {
+					alert("Table created successfully");
+				},
+				function(error) {
+					alert("Error occurred while creating the table.");
+				});
+			});
+		navigator.Backbutton.goHome(function() {
+		 swal("Great","Exititing","Success");
+		}, function() {
+		  console.log('fail')
+		});
+		document.addEventListener("backbutton", onBackKeyDown, true);
+        app.receivedEvent('deviceready');
 		 //screen.lockOrientation('landscape'); //this is the new line
     },
     // Update DOM on a Received Event
