@@ -338,22 +338,6 @@
 		},
 		function(e){
 			if(e){window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');}
-			else{
-				db.transaction(function(tx) {
-				tx.executeSql('SELECT src,id FROM EasyCans', [], function(tx, rs) {
-					
-					var len = rs.rows.length, i;
-					
-					/* for (i = 0; i < len; i++){
-						
-					} */
-					
-				  swal('Count:'+len,'Record count (expected to be 2): ' + rs.rows.item(0).src,'success');
-				}, function(tx, error) {
-				  alert('SELECT error: ' + error.message);
-				});
-			  });
-			}
 			});
 		
 		//var src = canvas.toDataURL();
