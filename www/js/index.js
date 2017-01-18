@@ -57,14 +57,6 @@ var app = {
 							  alert('SELECT error: ' + error.message);
 							});
 						  });
-					
-					for(var i=0;i<localStorage.length;i++){
-						if(localStorage.key(i).indexOf('EasyCan')!=-1){
-							var src = localStorage.getItem(localStorage.key(i));
-							console.log('images is ',localStorage.key(i));
-							$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+localStorage.key(i)+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
-						}
-					}
 				},
 				function(error) {
 					alert("Error occurred while creating the table.");
