@@ -315,8 +315,16 @@
 	});
 	$('#save').on('click',function(){
 		var date = new Date();
-		localStorage.setItem("EasyCan|"+date,canvas.toDataURL());
 		var id = "EasyCan|"+date;
+		//localStorage.setItem("EasyCan|"+date,canvas.toDataURL());
+		db.transaction(function(tx) {
+			tx.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (src, id)');
+			tx.executeSql('INSERT INTO EasyCans VALUES (?,?)', [canvas.toDataURL(), id]);
+		  }, function(error) {
+			console.log('Transaction ERROR: ' + error.message);
+		  }, function() {
+			console.log('Populated database OK');
+		  });
 		swal({
 		  title: "Congrats,you just Saved an EasyCanvas !",
 		  text: "Would you mind in ratin us on Google Play ?",
@@ -327,7 +335,16 @@
 		  closeOnConfirm: true
 		},
 		function(e){
-				window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');
+			if(e){window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');}
+			else{
+				db.transaction(function(tx) {
+				tx.executeSql('SELECT count(*) AS mycount FROM DemoTable', [], function(tx, rs) {
+				  alert('Record count (expected to be 2): ' + rs.rows.item(0).mycount);
+				}, function(tx, error) {
+				  alert('SELECT error: ' + error.message);
+				});
+			  });
+			}
 			});
 		
 		var src = canvas.toDataURL();
