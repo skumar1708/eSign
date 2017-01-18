@@ -34,8 +34,12 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		navigator.Backbutton.goHome(function() {
+		 swal("Great","Exititing","Success");
+		}, function() {
+		  console.log('fail')
+		});
 		document.addEventListener("backbutton", onBackKeyDown, true);
-	    document.addEventListener("pause", onBackKeyDown, true);
 		 //screen.lockOrientation('landscape'); //this is the new line
     },
     // Update DOM on a Received Event
