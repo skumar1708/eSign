@@ -41,16 +41,40 @@ var app = {
 				transaction.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (id integer primary key, src text, eid text)', [],
 				function(tx, result) {
 					alert("Table created successfully");
+						db.transaction(function(tx) {
+							tx.executeSql('SELECT src,id FROM EasyCans', [], function(tx, rs) {
+								
+								var len = rs.rows.length, i;
+								
+								for (i = 0; i < len; i++){
+									var src =  rs.rows.item(i).src;
+									var id = rs.rows.item(i).eid;
+									$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
+								} 
+								
+							  //swal('Count:'+len,'Record count (expected to be 2): ' + rs.rows.item(0).src,'success');
+							}, function(tx, error) {
+							  alert('SELECT error: ' + error.message);
+							});
+						  });
+					
+					for(var i=0;i<localStorage.length;i++){
+						if(localStorage.key(i).indexOf('EasyCan')!=-1){
+							var src = localStorage.getItem(localStorage.key(i));
+							console.log('images is ',localStorage.key(i));
+							$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+localStorage.key(i)+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
+						}
+					}
 				},
 				function(error) {
 					alert("Error occurred while creating the table.");
 				});
 			});
-		navigator.Backbutton.goHome(function() {
+		/* navigator.Backbutton.goHome(function() {
 		 swal("Great","Exititing","Success");
 		}, function() {
 		  console.log('fail')
-		});
+		}); */
 		document.addEventListener("backbutton", onBackKeyDown, true);
         app.receivedEvent('deviceready');
 		 //screen.lockOrientation('landscape'); //this is the new line
@@ -70,4 +94,5 @@ var app = {
     function onBackKeyDown(e) {
 		//e.preventDefault();
 		alert("back key presses!!");
+		 navigator.app.exitApp();
     }
