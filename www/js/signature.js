@@ -317,8 +317,8 @@
 		var date = new Date();
 		var eId = "EasyCan|"+date;
 		var source = canvas.toDataURL('image/png');
-		//localStorage.setItem("EasyCan|"+date,canvas.toDataURL());
-		console.log(db);	
+		localStorage.setItem("EasyCan",canvas.toDataURL());
+		console.log(localStorage.getItem('EasyCan'));	
 			db.transaction(function(transaction) {
 				var executeQuery = "INSERT INTO EasyCans (src, eid) VALUES (?,?)";
 				transaction.executeSql(executeQuery, [source,eId],function(tx, result) {
