@@ -42,13 +42,12 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 	<script src="js/swal.js"></script>
 	<script src="js/jscolor.js"></script>
-	<script src="js/reimg.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/swal.css">
 	<link rel="stylesheet" type="text/css" href="css/rangeslider.css">
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 	<!-- <link href="css/glyphs.css" rel="stylesheet"> -->
 	<link rel="stylesheet" href="css/bs.css">
-	
+	<!-- <link rel="stylesheet" href="css/jquery.mobile.css"> -->
 	<script src="js/jq.js"></script>
 	<script src="js/rangeslider.js"></script>
 	<style>
@@ -69,13 +68,14 @@
 </head>
 
 <body>
-<!-- <img class="toggle" src="img/menu.png" onclick="toggle_sidebar()" style="position: fixed; right: 10px; top: 10px" />
+<!-- <img class="toggle" src="localStorage.getItem(localStorage.key(0))" onclick="toggle_sidebar()" style="position: fixed; right: 10px; top: 10px" /> -->
         <div id="sidebar">
-            <h4>Item 1<h4>
-			<h4>Item 2<h4>
-			<h4>Item 3<h4>
-			<h4>Item 4<h4>
-        </div> -->
+            <ul id="savedItems" class="nav nav-pills nav-stacked">
+				
+			  </ul>
+        </div> 
+		
+		
    <div class="container">
 		<!-- <div class="row">
 			<div class="col-md-12">
@@ -115,13 +115,19 @@
 				
 					<!-- <img  src="img/pen.png"> -->
 				<input type="image" src="img/stroke.png" class="btn btn-default" id="stroke" style="border:2px solid grey;"> 
-				<input type="image" src="img/eraser.png" class="btn btn-default" id="erase" style="border:2px solid grey;"> 
+				<input type="image" src="img/opacity.png" class="btn btn-default" id="opacity" style="border:2px solid grey;"> 
+				<input type="image" src="img/eraser.png" class="btn btn-default" id="erase" style="border:2px solid grey;">
+				 <input type="image" src="img/export.png" class="btn btn-default pull-right" id="save" style="border:2px solid grey;"> 
 				 <input type="image" src="img/share.png" class="btn btn-default pull-right" id="share" style="border:2px solid grey;"> 
+				 <input type="image" src="img/list.png" class="btn btn-default pull-right" id="list" onclick="toggle_sidebar(event)"  style="border:2px solid grey;"> 
 				
 			</div>
 		</div>
 				<div id="rsContainer" style="display:none;">
-				  <input type="range" min="0" max="10" value="2" data-orientation="vertical"/>
+				  <input type="range" name="strokeRange" min="0" max="10" value="2" data-orientation="vertical"/>
+				</div>
+				<div id="rsContainerOpacity" style="display:none;">
+				  <input type="range" name="opacityRange" min="0" max="100" value="50" data-orientation="vertical"/>
 				</div>
 		<!-- <input id="valueInput" style="visibility:hidden;height:0px;width:0px;">
 		<input id="penInput" style="visibility:hidden;height:0px;width:0px;"> -->
@@ -150,35 +156,42 @@
 	
 	<script src="js/bs.js"></script>
 	<script src="js/signature.js"></script>
-	
 	<script>
-	$(document).bind('keydown', function(event) {
-		alert(event.keyCode);
-			  if (event.keyCode == 27) {
-				// Prevent default (disable the back button behavior)
-				event.preventDefault();
-
-				// Your code to show another page or whatever...
-			  }
-			});
+	
+				//localStorage.clear();
+            for(var i=0;i<localStorage.length;i++){
+				if(localStorage.key(i).indexOf('EasyCan')!=-1){
+					var src = localStorage.getItem(localStorage.key(i));
+					console.log('images is ',localStorage.key(i));
+					//if(localStorage.key(i).indexOf('data:image')>-1){localStorage.removeItem(localStorage.key(i));}
+					$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+localStorage.key(i)+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
+				}
+			}
 	$('#stroke').on('click',function(){
 		$('#rsContainer').toggle();
+		if($('#rsContainerOpacity').is( ":visible" ))$('#rsContainerOpacity').toggle();
+        
+	});
+	$('#opacity').on('click',function(){
+		$('#rsContainerOpacity').toggle();
+		if($('#rsContainer').is( ":visible" ))$('#rsContainer').toggle();
         
 	});
 		$('#rsContainer').hide();
-        function toggle_sidebar()
+		$('#rsContainerOpacity').hide();
+        function toggle_sidebar(e)
         {
             var sidebar = document.getElementById("sidebar");
             
-            console.log(sidebar.style.left);
+          //console.log('left is',sidebar.style.left.length);
             
-            if(sidebar.style.left == "-200px")
+            if(sidebar.style.left == "-268px" || sidebar.style.left == "")
             {
                 sidebar.style.left = "0px";
             }
             else
             {
-                sidebar.style.left = "-200px";
+                sidebar.style.left = "-268px";
             }
         }
 		
