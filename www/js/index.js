@@ -38,7 +38,7 @@ var app = {
 		swal('device is ready','Hurre','success');
 		db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
 		db.transaction(function(transaction) {
-				transaction.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (id integer primary key, src text, eid text)', [],
+				transaction.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (id integer primary key, src blob, eid text)', [],
 				function(tx, result) {
 					alert("Table created successfully");
 						db.transaction(function(tx) {
