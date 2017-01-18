@@ -36,7 +36,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 		swal('device is ready','Hurre','success');
-		db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
+		//db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
 		navigator.Backbutton.goHome(function() {
 		 swal("Great","Exititing","Success");
 		}, function() {
