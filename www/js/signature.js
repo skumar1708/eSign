@@ -12,7 +12,7 @@
 					};
 	})();
 
-	var db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
+	//var db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
 	// Set up the canvas
 	var isDirty = false;
 	var tool = 'pencil';
@@ -317,6 +317,7 @@
 		var date = new Date();
 		var id = "EasyCan|"+date;
 		//localStorage.setItem("EasyCan|"+date,canvas.toDataURL());
+		console.log(db);
 		db.transaction(function(tx) {
 			tx.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (src, id)');
 			tx.executeSql('INSERT INTO EasyCans VALUES (?,?)', [canvas.toDataURL(), id]);
@@ -338,8 +339,8 @@
 			if(e){window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');}
 			else{
 				db.transaction(function(tx) {
-				tx.executeSql('SELECT count(*) AS mycount FROM DemoTable', [], function(tx, rs) {
-				  alert('Record count (expected to be 2): ' + rs.rows.item(0).mycount);
+				tx.executeSql('SELECT count(*) AS mycount FROM EasyCans', [], function(tx, rs) {
+				  swal('Count','Record count (expected to be 2): ' + rs.rows.item(0).mycount,'success');
 				}, function(tx, error) {
 				  alert('SELECT error: ' + error.message);
 				});
@@ -347,10 +348,10 @@
 			}
 			});
 		
-		var src = canvas.toDataURL();
-		console.log('images is ',localStorage.key(i));
+		//var src = canvas.toDataURL();
+		//console.log('images is ',localStorage.key(i));
 		//if(localStorage.key(i).indexOf('data:image')>-1){localStorage.removeItem(localStorage.key(i));}
-		$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
+		//$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" //style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" //id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
 	});
 	$('#share').on('click',function(){
 		console.log(canvas.toDataURL("image/png"));
