@@ -37,13 +37,7 @@ var app = {
     onDeviceReady: function() {
 		swal('device is ready','Hurre','success');
 		//db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
-		navigator.Backbutton.goHome(function() {
-		 swal("Great","Exititing","Success");
-		}, function() {
-		  console.log('fail')
-		});
-		document.addEventListener("backbutton", onBackKeyDown, true);
-        app.receivedEvent('deviceready');
+		
 		 //screen.lockOrientation('landscape'); //this is the new line
     },
     // Update DOM on a Received Event
