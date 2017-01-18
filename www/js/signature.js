@@ -315,17 +315,28 @@
 	});
 	$('#save').on('click',function(){
 		var date = new Date();
-		var id = "EasyCan|"+date;
+		var eId = "EasyCan|"+date;
 		//localStorage.setItem("EasyCan|"+date,canvas.toDataURL());
 		console.log(db);
-		db.transaction(function(tx) {
-			tx.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (src, id)');
-			tx.executeSql('INSERT INTO EasyCans (src text,id text) VALUES (?,?)', [canvas.toDataURL(), id]);
-		  }, function(error) {
-			console.log('Transaction ERROR: ' + error.message);
-		  }, function() {
-			console.log('Populated database OK');
-		  });
+		db.transaction(function(transaction) {
+				transaction.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (id integer primary key, src text, eid text)', [],
+				function(tx, result) {
+					alert("Table created successfully");
+				},
+				function(error) {
+					alert("Error occurred while creating the table.");
+				});
+			});
+			
+			myDB.transaction(function(transaction) {
+				var executeQuery = "INSERT INTO EasyCans (src, eid) VALUES (?,?)";
+				transaction.executeSql(executeQuery, [canvas.toDataURL(),eid],function(tx, result) {
+					alert('Inserted');
+				},function(error){
+					alert('Error occurred');
+				});
+			});
+			
 		swal({
 		  title: "Congrats,you just Saved an EasyCanvas !",
 		  text: "Would you mind in ratin us on Google Play ?",
