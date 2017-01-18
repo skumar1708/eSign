@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ var db = null;
+ 
 var app = {
     // Application Constructor
     initialize: function() {
@@ -33,13 +35,15 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+		swal('device is ready','Hurre','success');
+		db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
 		navigator.Backbutton.goHome(function() {
 		 swal("Great","Exititing","Success");
 		}, function() {
 		  console.log('fail')
 		});
 		document.addEventListener("backbutton", onBackKeyDown, true);
+        app.receivedEvent('deviceready');
 		 //screen.lockOrientation('landscape'); //this is the new line
     },
     // Update DOM on a Received Event
