@@ -317,18 +317,8 @@
 		var date = new Date();
 		var eId = "EasyCan|"+date;
 		//localStorage.setItem("EasyCan|"+date,canvas.toDataURL());
-		console.log(db);
-		db.transaction(function(transaction) {
-				transaction.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (id integer primary key, src text, eid text)', [],
-				function(tx, result) {
-					alert("Table created successfully");
-				},
-				function(error) {
-					alert("Error occurred while creating the table.");
-				});
-			});
-			
-			myDB.transaction(function(transaction) {
+		console.log(db);	
+			db.transaction(function(transaction) {
 				var executeQuery = "INSERT INTO EasyCans (src, eid) VALUES (?,?)";
 				transaction.executeSql(executeQuery, [canvas.toDataURL(),eid],function(tx, result) {
 					alert('Inserted');
