@@ -320,7 +320,7 @@
 		console.log(db);
 		db.transaction(function(tx) {
 			tx.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (src, id)');
-			tx.executeSql('INSERT INTO EasyCans VALUES (?,?)', [canvas.toDataURL(), id]);
+			tx.executeSql('INSERT INTO EasyCans (src text,id text) VALUES (?,?)', [canvas.toDataURL(), id]);
 		  }, function(error) {
 			console.log('Transaction ERROR: ' + error.message);
 		  }, function() {
@@ -339,8 +339,15 @@
 			if(e){window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');}
 			else{
 				db.transaction(function(tx) {
-				tx.executeSql('SELECT count(*) AS mycount, src,id FROM EasyCans', [], function(tx, rs) {
-				  swal('Count:'+mycount,'Record count (expected to be 2): ' + rs.rows.item(0).src,'success');
+				tx.executeSql('SELECT src,id FROM EasyCans', [], function(tx, rs) {
+					
+					var len = rs.rows.length, i;
+					
+					for (i = 0; i < len; i++){
+						
+					}
+					
+				  swal('Count:'+len,'Record count (expected to be 2): ' + rs.rows.item(0).src,'success');
 				}, function(tx, error) {
 				  alert('SELECT error: ' + error.message);
 				});
