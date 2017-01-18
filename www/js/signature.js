@@ -337,7 +337,7 @@
 	});
 	$('#share').on('click',function(){
 		console.log(canvas.toDataURL("image/png"));
-		ctx.font = "10px Verdana";
+		ctx.font = "17px 'Indie Flower', cursive";
 		// Create gradient
 		var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
 		gradient.addColorStop("0", "magenta");
@@ -360,7 +360,7 @@
 		var onSuccess = function(result) {
 			 var canColor = $('#tButton').css('background-color');
 			  ctx.fillStyle = canColor;
-			  ctx.fillRect(8,10,150,15);
+			  ctx.fillRect(8,8,150,20);
 		}
 
 		var onError = function(msg) {
