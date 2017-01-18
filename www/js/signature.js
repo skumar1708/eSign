@@ -322,6 +322,9 @@
 				var executeQuery = "INSERT INTO EasyCans (src, eid) VALUES (?,?)";
 				transaction.executeSql(executeQuery, [canvas.toDataURL(),eId],function(tx, result) {
 					alert('Inserted');
+					
+					var src = canvas.toDataURL();
+					$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+eId+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
 				},function(error){
 					alert('Error occurred');
 				});
@@ -339,11 +342,6 @@
 		function(e){
 			if(e){window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');}
 			});
-		
-		//var src = canvas.toDataURL();
-		//console.log('images is ',localStorage.key(i));
-		//if(localStorage.key(i).indexOf('data:image')>-1){localStorage.removeItem(localStorage.key(i));}
-		//$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" //style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" //id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
 	});
 	$('#share').on('click',function(){
 		console.log(canvas.toDataURL("image/png"));
