@@ -316,15 +316,16 @@
 	$('#save').on('click',function(){
 		var date = new Date();
 		var eId = "EasyCan|"+date;
+		var source = canvas.toDataURL('image/png');
 		//localStorage.setItem("EasyCan|"+date,canvas.toDataURL());
 		console.log(db);	
 			db.transaction(function(transaction) {
 				var executeQuery = "INSERT INTO EasyCans (src, eid) VALUES (?,?)";
-				transaction.executeSql(executeQuery, [canvas.toDataURL(),eId],function(tx, result) {
-					alert('Inserted');
+				transaction.executeSql(executeQuery, [source,eId],function(tx, result) {
 					
-					var src = canvas.toDataURL();
-					$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+eId+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
+					$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+source+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+eId+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
+					
+					alert('Inserted '+source);
 				},function(error){
 					alert('Error occurred');
 				});
