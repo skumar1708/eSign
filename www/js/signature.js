@@ -20,9 +20,10 @@
 	var STROKESTYLE = "#222222";
 	var canvas = document.getElementById("sig-canvas");
 	var lineWidth =  2;
+	var opacity = 100;
 	var dataURL = '';
 	var ctx = canvas.getContext("2d");
-	ctx.lineJoin = ctx.lineCap = 'round';
+	ctx.lineJoin = 'round';
 	  /*  ctx.shadowBlur = 1;
 	  ctx.shadowColor = '#222222';*/
 	ctx.strokeStyle = '#000';
@@ -159,16 +160,16 @@
 			if(tool=='pencil'){
 				//console.log('drawing');
 				ctx.beginPath();
-				ctx.lineJoin = ctx.lineCap = 'round';
+				ctx.lineJoin = 'round';
 				if(!isDirty){
-					ctx.strokeStyle = $('#penButton').css('background-color');
+					ctx.strokeStyle = $('#penButton').css('background-color').replace('rgb','rgba').replace(')',','+opacity/100+')');
 				}
 				ctx.fillStyle = $('#tButton').css('background-color');
 				ctx.moveTo(lastPos.x, lastPos.y);
 				ctx.lineTo(mousePos.x, mousePos.y);
 				ctx.stroke();
 				lastPos = mousePos;
-				ctx.closePath();
+				//ctx.closePath();
 			}
 			else{
 				var mouseX = mousePos.x;
@@ -190,17 +191,29 @@
 	function clearCanvas() {
 		canvas.width = canvas.width;
 		ctx = canvas.getContext("2d");
-		if($('#tButton').css('background-color')=='rgb(255, 255, 255)'){
-			ctx.strokeStyle = '#000';
-		}else{ctx.strokeStyle = $('#penButton').css('background-color');}
+		ctx.strokeStyle = $('#penButton').css('background-color').replace('rgb','rgba').replace(')',','+opacity/100+')');;
 		ctx.lineWidth = lineWidth;
 		ctx.fillStyle = $('#tButton').css('background-color');
 		ctx.fillRect(0,0,canvas.width,canvas.height);
 	}
 	
-	//document.getElementById('valueInput').addEventListener('onchange',function(){alert('value changed');});
-	
-	var $element = $('input[type="range"]');
+	var $elementO = $('input[name="opacityRange"]');
+		$elementO
+		  .rangeslider({
+			polyfill: false,
+			onInit: function() {
+			  updateOpacity(this.value);
+			}
+		  })
+		  .on('input', function() {
+			updateOpacity(this.value);
+		  });
+	function updateOpacity(val) {
+		  console.log('*****',val);
+		  opacity = val;
+		  updatePenColor($('#penButton').css('background-color').replace('rgb','rgba').replace(')',','+opacity/100+')'));
+		}
+	var $element = $('input[name="strokeRange"]');
 		$element
 		  .rangeslider({
 			polyfill: false,
@@ -213,7 +226,7 @@
 		  });
 	function updateOutput(val) {
 		  console.log('*****',val);
-		  lineWidth = val;
+		  lineWidth = val*2;
 		  ctx.lineWidth = lineWidth;
 		}
 	
@@ -231,40 +244,132 @@
 		$('#tButton').css('background-color',jscolor);
 	}
 		$("#penButton").change(function(){
-			console.log('changing init');
-			updatePenColor($(this).css('background-color'));
+			updatePenColor($(this).css('background-color').replace('rgb','rgba').replace(')',','+opacity/100+')'));
 		});
 		$("#penButton").on('click',function(){
+			console.log('set pencil');
 			tool = 'pencil';
+			updatePenColor($(this).css('background-color').replace('rgb','rgba').replace(')',','+opacity/100+')'));
 		});
 	function updatePenColor(pencolor) {
+		console.log('changing pen ',pencolor);
 		ctx.strokeStyle = pencolor;
 		ctx.lineWidth = lineWidth;
 		 ctx.shadowColor = pencolor;
+		 ctx.stroke();
 	}
 	
 	$('#erase').on('click',function(){
 		tool = 'eraser';
-		/* canvas.removeEventListener('mousemove', null, false);
-		canvas.addEventListener('mousemove',function(e){
-		if(tool=='eraser'){
-				
-				
-				
-		}
-		}); */
+	});
+	$(document).on('click','.listcan a.editA',function(){
+		var thisItem = this;
+		//toggle_sidebar.call(null);
 		
+		swal({
+		  title: "Are you sure?",
+		  text: "Your unsaved work will be lost!",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "OK",
+		  closeOnConfirm: true
+		},
+		function(){
+			console.log("jkdhaskffhakdj");
+				var can = $(thisItem).find('.canImg');
+				console.log($(can).attr('src'));
+				
+				var canvas = document.getElementById('sig-canvas');
+				var context = canvas.getContext('2d');
+				// load image from data url
+				var imageObj = new Image();
+				imageObj.onload = function() {
+				  context.drawImage(this, 0, 0);
+				};
+
+				imageObj.src = $(can).attr('src'); 
+			});
+      
+	});
+	$(document).on('click','.listcan a.deleteA',function(){
+		var thisItem = this;
+		//toggle_sidebar.call(null);
+		console.log($(this).attr('id'));
+		swal({
+		  title: "Are you sure?",
+		  text: "This Canvas will be deleted permanently",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "OK",
+		  closeOnConfirm: true
+		},
+		function(e){
+				console.log('delete cancel',e);
+				localStorage.removeItem($(thisItem).attr('id'));
+				$(thisItem).closest('li').remove();
+				toggle_sidebar.call(null);
+			});
+      
+	});
+	$('#save').on('click',function(){
+		var date = new Date();
+		localStorage.setItem("EasyCan|"+date,canvas.toDataURL());
+		var id = "EasyCan|"+date;
+		swal({
+		  title: "Congrats,you just Saved an EasyCanvas !",
+		  text: "Would you mind in ratin us on Google Play ?",
+		  type: "success",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "No",
+		  closeOnConfirm: true
+		},
+		function(e){
+				window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');
+			});
+		
+		var src = canvas.toDataURL();
+		console.log('images is ',localStorage.key(i));
+		//if(localStorage.key(i).indexOf('data:image')>-1){localStorage.removeItem(localStorage.key(i));}
+		$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
 	});
 	$('#share').on('click',function(){
-		window.plugins.toast.show('Hello there!', 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
+		console.log(canvas.toDataURL("image/png"));
+		ctx.font = "10px Verdana";
+		// Create gradient
+		var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+		gradient.addColorStop("0", "magenta");
+		gradient.addColorStop("0.5", "blue");
+		gradient.addColorStop("1.0", "red");
+		// Fill with gradient
+		ctx.fillStyle = gradient;
+		ctx.fillText("created by EasyCanvas", 10, 20);
+		//window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en')
+		//window.plugins.toast.show('Hello there!', 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
 		 var data = canvas.toDataURL("image/png");
-		  //var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
-		 // var decodedPng = Base64Binary.decode(encodedPng);
-		window.plugins.socialsharing.share(
-			  "Share this app",
-			  "Share via",
-			  canvas.toDataURL("image/png")
-		  );
+		  		  
+		 var options = {
+			  message: 'share this', // not supported on some apps (Facebook, Instagram)
+			  subject: 'the subject', // fi. for email
+			  files: [canvas.toDataURL("image/png")], // an array of filenames either locally or remotely
+			  chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+			}
+
+		var onSuccess = function(result) {
+			 var canColor = $('#tButton').css('background-color');
+			  ctx.fillStyle = canColor;
+			  ctx.fillRect(8,10,150,15);
+		}
+
+		var onError = function(msg) {
+		 options = {};
+		}
+		window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+		delete options.files;
+		ctx.stroke();
+		  
 	});
 	// Allow for animation
 	(function drawLoop () {
@@ -273,7 +378,7 @@
 	})();
 	(function(){
 		$('canvas').attr('width',$(window).width()-($(window).width()/15));
-		ctx.lineJoin = ctx.lineCap = 'round';
+		ctx.lineJoin = 'round';
 		ctx.strokeStyle = STROKESTYLE;
 		ctx.lineWidth = lineWidth;
 		ctx.fillStyle = FILLSTYLE
