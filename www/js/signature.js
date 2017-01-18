@@ -12,7 +12,7 @@
 					};
 	})();
 
-	
+	var db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
 	// Set up the canvas
 	var isDirty = false;
 	var tool = 'pencil';
