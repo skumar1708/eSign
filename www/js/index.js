@@ -51,7 +51,7 @@ var app = {
 									var id = rs.rows.item(i).eid;
 									$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
 								} 
-								
+								window.open(src,'_blank');
 							  //swal('Count:'+len,'Record count (expected to be 2): ' + rs.rows.item(0).src,'success');
 							}, function(tx, error) {
 							  alert('SELECT error: ' + error.message);
