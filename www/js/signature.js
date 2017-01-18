@@ -320,7 +320,7 @@
 		console.log(db);	
 			db.transaction(function(transaction) {
 				var executeQuery = "INSERT INTO EasyCans (src, eid) VALUES (?,?)";
-				transaction.executeSql(executeQuery, [canvas.toDataURL(),eid],function(tx, result) {
+				transaction.executeSql(executeQuery, [canvas.toDataURL(),eId],function(tx, result) {
 					alert('Inserted');
 				},function(error){
 					alert('Error occurred');
@@ -344,9 +344,9 @@
 					
 					var len = rs.rows.length, i;
 					
-					for (i = 0; i < len; i++){
+					/* for (i = 0; i < len; i++){
 						
-					}
+					} */
 					
 				  swal('Count:'+len,'Record count (expected to be 2): ' + rs.rows.item(0).src,'success');
 				}, function(tx, error) {
