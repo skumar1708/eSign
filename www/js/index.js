@@ -52,7 +52,7 @@ var app = {
 									var src =  rs.rows.item(i).src;
 									var id = rs.rows.item(i).eid;
 									alert(rs.rows.item(i).src);
-									$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
+									$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+rs.rows.item(0).src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
 								} 
 								window.open(rs.rows.item(0).src,'_blank');
 							  //swal('Count:'+len,'Record count (expected to be 2): ' + rs.rows.item(0).src,'success');
