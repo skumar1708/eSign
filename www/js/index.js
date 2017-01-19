@@ -16,7 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- var db = null;
  
 var app = {
     // Application Constructor
@@ -35,38 +34,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-		swal('device is ready','Hurre','success');
-		db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
-		setTimeout(function(){
-			
-			db.transaction(function(transaction) {
-				transaction.executeSql('CREATE TABLE IF NOT EXISTS EasyCans (id integer primary key, src blob, eid text)', [],
-				function(tx, result) {
-					alert("Table created successfully");
-						db.transaction(function(tx) {
-							tx.executeSql('SELECT src,id FROM EasyCans', [], function(tx, rs) {
-								
-								var len = rs.rows.length, i;
-								
-								for (i = 0; i < len; i++){
-									var src =  rs.rows.item(i).src;
-									var id = rs.rows.item(i).eid;
-									alert(rs.rows.item(i).src);
-									$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+rs.rows.item(0).src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
-								} 
-								window.open(rs.rows.item(0).src,'_blank');
-							  //swal('Count:'+len,'Record count (expected to be 2): ' + rs.rows.item(0).src,'success');
-							}, function(tx, error) {
-							  alert('SELECT error: ' + error.message);
-							});
-						  });
-				},
-				function(error) {
-					alert("Error occurred while creating the table.");
-				});
-			});
-			
-		},2000);
+		
 		/* navigator.Backbutton.goHome(function() {
 		 swal("Great","Exititing","Success");
 		}, function() {
@@ -89,7 +57,19 @@ var app = {
     }
 };
     function onBackKeyDown(e) {
-		//e.preventDefault();
-		alert("back key presses!!");
-		 navigator.app.exitApp();
+		swal({
+		  title: "Are you sure want to Exit?",
+		  text: "Unsaved work will be lost !",
+		  type: "warning",
+		  width:100,
+		  height:100,
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "Yes",
+		  cancelButtonText: "No",
+		  closeOnConfirm: true
+		},
+		function(e){
+				if(e) navigator.app.exitApp();
+			});
     }
