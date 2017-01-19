@@ -12,7 +12,7 @@
 					};
 	})();
 
-	//var db = window.sqlitePlugin.openDatabase({name: 'easycan.db', location: 'default'});
+	
 	// Set up the canvas
 	var isDirty = false;
 	var tool = 'pencil';
@@ -276,7 +276,6 @@
 		  closeOnConfirm: true
 		},
 		function(){
-			console.log("jkdhaskffhakdj");
 				var can = $(thisItem).find('.canImg');
 				console.log($(can).attr('src'));
 				
@@ -289,6 +288,8 @@
 				};
 
 				imageObj.src = $(can).attr('src'); 
+				
+				toggle_sidebar.call(null);
 			});
       
 	});
@@ -315,24 +316,10 @@
 	});
 	$('#save').on('click',function(){
 		var date = new Date();
-		var eId = "EasyCan|"+date;
-		var source = canvas.toDataURL('image/png');
-		localStorage.setItem("EasyCan",canvas.toDataURL());
-		console.log(localStorage.getItem('EasyCan'));	
-			db.transaction(function(transaction) {
-				var executeQuery = "INSERT INTO EasyCans (src, eid) VALUES (?,?)";
-				transaction.executeSql(executeQuery, [source,eId],function(tx, result) {
-					
-					$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+source+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+eId+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
-					
-					alert('Inserted '+source);
-				},function(error){
-					alert('Error occurred');
-				});
-			});
-			
+		localStorage.setItem("EasyCan|"+date,canvas.toDataURL());
+		var id = "EasyCan|"+date;
 		swal({
-		  title: "Congrats,you just Saved an EasyCanvas !",
+		  title: "EasyCanvas Saved!",
 		  text: "Would you mind in ratin us on Google Play ?",
 		  type: "success",
 		  showCancelButton: true,
@@ -341,8 +328,13 @@
 		  closeOnConfirm: true
 		},
 		function(e){
-			if(e){window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');}
+				if(e)window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');
 			});
+		
+		var src = canvas.toDataURL();
+		console.log('images is ',localStorage.key(i));
+		//if(localStorage.key(i).indexOf('data:image')>-1){localStorage.removeItem(localStorage.key(i));}
+		$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
 	});
 	$('#share').on('click',function(){
 		console.log(canvas.toDataURL("image/png"));
@@ -386,7 +378,8 @@
 		renderCanvas();
 	})();
 	(function(){
-		$('canvas').attr('width',$(window).width()-($(window).width()/15));
+		$('canvas').attr('width',$(window).width()-40);
+		$('canvas').attr('height',$(window).height()-65);
 		ctx.lineJoin = 'round';
 		ctx.strokeStyle = STROKESTYLE;
 		ctx.lineWidth = lineWidth;
