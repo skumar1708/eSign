@@ -23,13 +23,12 @@
 	var opacity = 100;
 	var dataURL = '';
 	var ctx = canvas.getContext("2d");
-	ctx.lineJoin = 'round';
-	  /*  ctx.shadowBlur = 1;
-	  ctx.shadowColor = '#222222';*/
+	ctx.lineCap ='round';
 	ctx.strokeStyle = '#000';
 	ctx.lineWidth = lineWidth;
 	ctx.fillStyle = '#fff';
 	ctx.fillRect(0,0,canvas.width,canvas.height);
+	//ctx.translate(0.5, 0.5);
 	ctx.stroke();
 
 	// Set up the UI
@@ -160,12 +159,17 @@
 			if(tool=='pencil'){
 				//console.log('drawing');
 				ctx.beginPath();
-				ctx.lineJoin = 'round';
+
+				ctx.lineCap =  'round';
 				if(!isDirty){
 					ctx.strokeStyle = $('#penButton').css('background-color').replace('rgb','rgba').replace(')',','+opacity/100+')');
 				}
 				ctx.fillStyle = $('#tButton').css('background-color');
 				ctx.moveTo(lastPos.x, lastPos.y);
+				
+				var c = (lastPos.x+mousePos.x)/2;
+				var d = (lastPos.y+mousePos.y)/2;
+				//ctx.quadraticCurveTo(mousePos.x, mousePos.y, c, d)
 				ctx.lineTo(mousePos.x, mousePos.y);
 				ctx.stroke();
 				lastPos = mousePos;
@@ -379,8 +383,13 @@
 	})();
 	(function(){
 		$('canvas').attr('width',$(window).width()-40);
-		$('canvas').attr('height',$(window).height()-65);
-		ctx.lineJoin = 'round';
+		if($(window).width()<500){
+			$('canvas').attr('height',$(window).height()-90);
+		}else{
+			$('canvas').attr('height',$(window).height()-65);
+		}
+		
+		ctx.lineCap =  'round';
 		ctx.strokeStyle = STROKESTYLE;
 		ctx.lineWidth = lineWidth;
 		ctx.fillStyle = FILLSTYLE
