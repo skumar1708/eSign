@@ -62,8 +62,8 @@
 							  type: "success",
 							  showCancelButton: true,
 							  confirmButtonColor: "#DD6B55",
-							  confirmButtonText: "OPEN",
-							  cancelButtonText: "OPEN",
+							  confirmButtonText: "Open",
+							  cancelButtonText: "Cancel",
 							  closeOnConfirm: true
 							},
 							function(){
