@@ -44,6 +44,7 @@
 	<script src="js/jscolor.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/swal.css">
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=latin-ext,vietnamese" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/rangeslider.css">
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 	<!-- <link href="css/glyphs.css" rel="stylesheet"> -->
@@ -65,19 +66,43 @@
 			width: 100%;
 		}
 	</style>
-    <title>e Signature</title>
+    <title>EasyCanvas</title>
 </head>
 
 <body>
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog" style="margin: 0px;">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			
+			<div class="modal-body">
+			  <img src="img/easy-splash.png"><span id="splashTitle">Easy Canvas</span>
+			  
+			  <div id="splashQoute">"Qoute of the day"</div>
+			</div>
+			
+			
+			<div class="modal-footer">
+			 <!-- <button type="button" class="btn btn-success" id="launchTour">
+					 <span>Launch Tour</span> 
+			</button> -->
+			 <button type="button" class="btn btn-success" id="launchCan">
+					 <span>Launch Canvas</span> 
+			</button>
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	
 <!-- <img class="toggle" src="localStorage.getItem(localStorage.key(0))" onclick="toggle_sidebar()" style="position: fixed; right: 10px; top: 10px" /> -->
         <div id="sidebar">
             <ul id="savedItems" class="nav nav-pills nav-stacked">
 				
 			  </ul>
         </div> 
-		
-		
-   <div class="container">
+   <div class="container" style="display:none;">
 		<!-- <div class="row">
 			<div class="col-md-12">
 				<h1>E-Signature</h1>
@@ -128,7 +153,7 @@
 				  <input type="range" name="strokeRange" min="0" max="10" value="2" data-orientation="vertical"/>
 				</div>
 				<div id="rsContainerOpacity" style="display:none;">
-				  <input type="range" name="opacityRange" min="0" max="100" value="50" data-orientation="vertical"/>
+				  <input type="range" name="opacityRange" min="0" max="100" value="100" data-orientation="vertical"/>
 				</div>
 		<!-- <input id="valueInput" style="visibility:hidden;height:0px;width:0px;">
 		<input id="penInput" style="visibility:hidden;height:0px;width:0px;"> -->
@@ -207,5 +232,20 @@
       //  }
     </script>
 </body>
-
+<script>
+		$(document).ready(function(){
+			
+				$("#myModal").modal();
+				//$("#myModalQoute").modal();
+				
+				$('#myModal').attr('width',$(window).width()-40);
+				$('#myModal').attr('height',$(window).height()-65);
+				$('#launchCan').on('click',function(){
+					$("#myModal").modal('hide');
+					$(".container").css('display',' ');
+				
+				});
+			
+		});
+</script>
 </html>
