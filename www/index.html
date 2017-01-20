@@ -79,7 +79,7 @@
 			<div class="modal-body">
 			  <img src="img/easy-splash.png"><span id="splashTitle">Easy Canvas</span>
 			  
-			  <div id="splashQoute">"Qoute of the day"</div>
+			  <div id="splashQoute">" Every painting is a voyage into a sacred harbour."</div>
 			</div>
 			
 			
@@ -240,6 +240,9 @@
 				
 				$('#myModal').attr('width',$(window).width()-40);
 				$('#myModal').attr('height',$(window).height()-65);
+				$('#splashQoute').css('height',$(window).height()-210);
+				
+				
 				$('#launchCan').on('click',function(){
 					$("#myModal").modal('hide');
 					$(".container").css('display',' ');
