@@ -198,3 +198,19 @@ body {
 .imgDelete{
 	padding: 5px 0px;
 }
+
+#splashTitle{
+	font-family:'Indie Flower', cursive;
+	    margin-left: 1%;
+    font-size: 20px;
+}
+
+#splashQoute{
+		font-family: 'Pacifico', serif;
+	    text-align: center;
+		padding: 12%;
+		font-variant: small-caps;
+}
+.modal-content{
+  background: linear-gradient(to right, rgba(255,0,0,0), #51cc53);
+}
