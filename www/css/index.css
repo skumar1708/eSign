@@ -207,9 +207,12 @@ body {
 
 #splashQoute{
 		font-family: 'Pacifico', serif;
+		font-size:11px;
 	    text-align: center;
-		padding: 10%;
+		/* padding: 12%; */
 		font-variant: small-caps;
+		    height: auto;
+    margin: 2%;
 }
 .modal-content{
   background: linear-gradient(to right, rgba(255,0,0,0), #51cc53);
