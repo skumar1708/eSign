@@ -235,7 +235,20 @@
 		}
 	
 	$("#tButton").change(function(){
-			updateCanvasColor($(this).css('background-color'));
+		var tButton = this;
+			swal({
+			  title: "Changing background !",
+			  text: "Have you saved your canvas ?",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonColor: "#DD6B55",
+			  confirmButtonText: "Yes",
+			  cancelButtonText: "No",
+			  closeOnConfirm: true
+			},
+			function(e){
+					if(e)updateCanvasColor($(tButton).css('background-color'));
+				});
 		});
 	function updateCanvasColor(jscolor) {
 		console.log(jscolor);
@@ -272,7 +285,7 @@
 		
 		swal({
 		  title: "Are you sure?",
-		  text: "Your unsaved work will be lost!",
+		  text: "Your unsaved canvas will be lost!",
 		  type: "warning",
 		  showCancelButton: true,
 		  confirmButtonColor: "#DD6B55",
