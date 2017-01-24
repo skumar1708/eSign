@@ -50,7 +50,7 @@
 		downloadCanvas(canvas);
 	
 	});
-	function downloadCanvas(canvas) {
+	var downloadCanvas = function(canvas) {
 			if(window.hasOwnProperty('hasProduct')){
 				if(hasProduct('product_easy_export')){
 						window.canvas2ImagePlugin.saveImageDataToLibrary(
@@ -88,7 +88,7 @@
 								  closeOnConfirm: true
 								},
 								function(e){
-									if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
+									//if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
 								});
 			}
 			}
