@@ -67,9 +67,9 @@ var app = {
 				
 				product_info[p["productId"]] = { title: p["title"], price: p["price"] };			
 				
-				alert("productId: "+p["productId"]);
-				alert("title: "+p["title"]);
-				alert("price: "+p["price"]);
+				//alert("productId: "+p["productId"]);
+				//alert("title: "+p["title"]);
+				//alert("price: "+p["price"]);
 			}
 		}, function (error){
 			alert("error: "+error);
@@ -118,7 +118,7 @@ var app = {
 	
 	
 	var purchaseProduct = function(productId) {
-		alert('PURCHASING PRODUCT FROM PLAY STORE');
+		//alert('PURCHASING PRODUCT FROM PLAY STORE');
 		//purchase product id, put purchase product id info into server. 
 		window.iap.purchaseProduct(productId, function (result){
 			alert("purchaseProduct");
@@ -139,7 +139,7 @@ var app = {
 	};
 	 
 	var restorePurchases = function() {
-		alert('GETTING PURCHASED INFOS');
+		//alert('GETTING PURCHASED INFOS');
 		//get user's purchased product ids which purchased before and not cunsumed. 
 		window.iap.restorePurchases(function (result){
 			for (var i = 0 ; i < result.length; ++i){
