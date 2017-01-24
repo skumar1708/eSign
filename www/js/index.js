@@ -168,7 +168,7 @@ var app = {
 		//sigImage.setAttribute("src", dataUrl);
 		 
 		//downloadCanvas(canvas);
-		if(window.hasOwnProperty('hasProduct')){
+		
 			//	alert("hassPro1"+hasProduct('product_easy_export'));
 			//	alert("hassPro1"+!window.hasProduct);
 				if(existing_purchases.length > 1){
@@ -210,10 +210,5 @@ var app = {
 									if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
 								});
 			}
-			}
 	
 	},false);
-	var downloadCanvas = function(canvas) {
-			
-		 
-	}
