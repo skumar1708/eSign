@@ -17,6 +17,12 @@
  * under the License.
  */
  
+ 
+ var androidApplicationLicenseKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyWuTJQClo0zEUXsxqBtAfj1BeUUF6lvpNG6zzzHJcss3YWK6XUuegy/eUvJgDO0L1yY1xhcC/beyGXEW/is7Ua5DMPx+IzqUFFtrx/xp32c5JB27p6XajqsvqkVXBV76UQLnaO5afNVR4gQquuIS72MceH9D5x4nvbZOh1vtEBVhmCoXMXeZ4VvISQ3gxGuNXnMl/p0sWM6gb5qfN5YjLCGTU8BhpazBQnqu4dqGLlLokpMGGkMogh8/LrF7dSZfbeSsZcZkY9h15gsDzlc41lMGgbQ5EkKUbHxCQQKfdfrsFJEFiD0cmRC9jB9bu47M+p8F8lYIiAu3ICeH0WkmMwIDAQAB";
+var productIds = "product_easy_export";
+var existing_purchases = [];
+var product_info = {};
+ 
 var app = {
     // Application Constructor
     initialize: function() {
@@ -34,7 +40,43 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+		window.iap.setUp(androidApplicationLicenseKey);
 		
+		//get all products' infos for all productIds 
+		window.iap.requestStoreListing(productIds, function (result){
+		/*
+		[
+			{
+				"productId": "sword001",
+				"title": "Sword of Truths",
+				"price": "Formatted price of the item, including its currency sign.",
+				"description": "Very pointy sword. Sword knows if you are lying, so don't lie."
+			},
+			{
+				"productId": "shield001",
+				"title": "Shield of Peanuts",
+				"price": "Formatted price of the item, including its currency sign.",
+				"description": "A shield made entirely of peanuts."
+			}
+		]
+		*/
+		//alert(JSON.stringify(result)); 
+	 
+			for (var i = 0 ; i < result.length; ++i){
+				var p = result[i];
+				
+				product_info[p["productId"]] = { title: p["title"], price: p["price"] };			
+				
+				alert("productId: "+p["productId"]);
+				alert("title: "+p["title"]);
+				alert("price: "+p["price"]);
+			}
+		}, function (error){
+			alert("error: "+error);
+		});
+		
+		
+		restorePurchases();
 		/* navigator.Backbutton.goHome(function() {
 		 swal("Great","Exititing","Success");
 		}, function() {
@@ -73,3 +115,47 @@ var app = {
 				if(e) navigator.app.exitApp();
 			});
     }
+	
+	
+	var purchaseProduct = function(productId) {
+		alert('PURCHASING PRODUCT FROM PLAY STORE');
+		//purchase product id, put purchase product id info into server. 
+		window.iap.purchaseProduct(productId, function (result){
+			alert("purchaseProduct");
+		}, 
+		function (error){
+			alert("error: "+error);
+		});
+	};
+	 
+	var consumeProduct = function(productId) {
+		//consume product id, throw away purchase product id info from server. 
+		window.iap.consumeProduct(productId, function (result){
+			alert("purchaseProduct");
+		}, 
+		function (error){
+			alert("error: "+error);
+		});	
+	};
+	 
+	var restorePurchases function() {
+		alert('GETTING PURCHASED INFOS');
+		//get user's purchased product ids which purchased before and not cunsumed. 
+		window.iap.restorePurchases(function (result){
+			for (var i = 0 ; i < result.length; ++i){
+				var p = result[i];
+				
+				if (self.existing_purchases.indexOf(p['productId']) === -1)
+					self.existing_purchases.push(p['productId']);			
+	 
+				alert("productId: "+p['productId']);
+			}
+		}, 
+		function (error){
+			alert("error: "+error);
+		});
+	};
+	 
+	var  hasProduct = function (productId){
+		return existing_purchases.indexOf(productId) !== -1;
+	};
