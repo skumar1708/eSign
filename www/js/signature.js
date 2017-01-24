@@ -35,21 +35,14 @@
 	var sigText = document.getElementById("sig-dataUrl");
 	var sigImage = document.getElementById("sig-image");
 	var clearBtn = document.getElementById("sig-clearBtn");
-	var submitBtn = document.getElementById("sig-submitBtn");
+	
 	
 	clearBtn.addEventListener("click", function (e) {
 		clearCanvas();
 		/* sigText.innerHTML = "Data URL for your signature will go here!";
 		sigImage.setAttribute("src", ""); */
 	}, false);
-	submitBtn.addEventListener("click", function (e) {
-		var dataUrl = canvas.toDataURL();
-		//sigText.innerHTML = dataUrl;
-		//sigImage.setAttribute("src", dataUrl);
-		 
-		downloadCanvas(canvas);
 	
-	},false);
 	// Set up mouse events for drawing
 	var drawing = false;
 	var mousePos = { x:0, y:0 };
