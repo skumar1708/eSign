@@ -20,7 +20,7 @@
  
  var androidApplicationLicenseKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyWuTJQClo0zEUXsxqBtAfj1BeUUF6lvpNG6zzzHJcss3YWK6XUuegy/eUvJgDO0L1yY1xhcC/beyGXEW/is7Ua5DMPx+IzqUFFtrx/xp32c5JB27p6XajqsvqkVXBV76UQLnaO5afNVR4gQquuIS72MceH9D5x4nvbZOh1vtEBVhmCoXMXeZ4VvISQ3gxGuNXnMl/p0sWM6gb5qfN5YjLCGTU8BhpazBQnqu4dqGLlLokpMGGkMogh8/LrF7dSZfbeSsZcZkY9h15gsDzlc41lMGgbQ5EkKUbHxCQQKfdfrsFJEFiD0cmRC9jB9bu47M+p8F8lYIiAu3ICeH0WkmMwIDAQAB";
 var productIds = "product_easy_export";
-var existing_purchases = ['TEMP_ITEM'];
+var existing_purchases = [];
 var product_info = {};
  
 var app = {
@@ -147,12 +147,12 @@ var app = {
 				
 				if (existing_purchases.indexOf(p['productId']) === -1)
 					existing_purchases.push(p['productId']);			
-	 
+					existing_purchases.push('success');				
 				alert("productId: "+p['productId']);
 			}
 		}, 
 		function (error){
-			//existing_purchases.push('error');
+			existing_purchases.push('error');
 			alert("error: "+error);
 		});
 	};
