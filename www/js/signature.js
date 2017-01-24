@@ -361,6 +361,9 @@
 		},
 		function(e){
 				if(e)window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');
+				else{
+					 adbuddiz.rewardedVideo.show();
+				}
 			});
 		
 		var src = canvas.toDataURL();
