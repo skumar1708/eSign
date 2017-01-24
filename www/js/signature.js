@@ -1,4 +1,5 @@
 (function() {
+	
 	// Get a regular interval for drawing to the screen
 	window.requestAnimFrame = (function (callback) {
 		return window.requestAnimationFrame || 
@@ -50,11 +51,10 @@
 	
 	});
 	function downloadCanvas(canvas) {
-				window.canvas2ImagePlugin.saveImageDataToLibrary(
+		
+		if(app.hasProduct){
+			window.canvas2ImagePlugin.saveImageDataToLibrary(
 					function(msg){
-						swal("Done","Image saved in "+msg,"success");
-						
-						
 						swal({
 							  title: "Done",
 							  text: "Image saved in "+msg,
@@ -65,9 +65,9 @@
 							  cancelButtonText: "Cancel",
 							  closeOnConfirm: true
 							},
-							function(){
+							function(e){
 							  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
-							  window.open(canvas.toDataURL(),'_blank', 'location=yes');
+							  if(e)window.open(canvas.toDataURL(),'_blank', 'location=yes');
 							});
 					},
 					function(err){
@@ -75,6 +75,22 @@
 					},
 					canvas
 			);
+		}
+		else{
+				swal({
+					  title: "GET PRO !",
+					  text: "You need to upgrade the app to utiliize export feature.",
+					  type: "warning",
+					  showCancelButton: true,
+					  confirmButtonColor: "#DD6B55",
+					  confirmButtonText: "Upgrade",
+					  cancelButtonText: "Later",
+					  closeOnConfirm: true
+					},
+					function(e){
+					  if(e)app.purchaseProduct();
+					});
+		}
 		
 	}
 	// Set up mouse events for drawing
