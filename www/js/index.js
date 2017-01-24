@@ -145,8 +145,8 @@ var app = {
 			for (var i = 0 ; i < result.length; ++i){
 				var p = result[i];
 				
-				if (self.existing_purchases.indexOf(p['productId']) === -1)
-					self.existing_purchases.push(p['productId']);			
+				if (this.existing_purchases.indexOf(p['productId']) === -1)
+					this.existing_purchases.push(p['productId']);			
 	 
 				alert("productId: "+p['productId']);
 			}
