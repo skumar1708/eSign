@@ -47,18 +47,6 @@
         <icon density="xhdpi" src="www/res/icon/android/drawable-xhdpi-icon.png" />
         <icon density="xxhdpi" src="www/res/icon/android/drawable-xxhdpi-icon.png" />
         <icon density="xxxhdpi" src="www/res/icon/android/drawable-xxxhdpi-icon.png" />
-		<splash density="land-ldpi" src="res/screen/android/easy-splash.png" />
-       <splash density="land-mdpi" src="res/screen/android/easy-splash.png" />
-        <splash density="land-hdpi" src="res/screen/android/easy-splash.png" />
-        <splash density="land-xhdpi" src="res/screen/android/easy-splash.png" />
-        <splash density="land-xxhdpi" src="res/screen/android/easy-splash.png" />
-        <splash density="land-xxxhdpi" src="res/screen/android/easy-splash.png" />
-        <splash density="port-ldpi" src="res/screen/android/easy-splash.png" />
-        <splash density="port-mdpi" src="res/screen/android/easy-splash.png" />
-        <splash density="port-hdpi" src="res/screen/android/easy-splash.png" />
-        <splash density="port-xhdpi" src="res/screen/android/easy-splash.png" />
-        <splash density="port-xxhdpi" src="res/screen/android/easy-splash.png" />
-        <splash density="port-xxxhdpi" src="/www/res/screen/android/easy-splash.png" /> 
     </platform>
 <!--     <platform name="ios">
         <icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />
