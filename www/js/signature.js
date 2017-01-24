@@ -51,10 +51,11 @@
 	
 	});
 	function downloadCanvas(canvas) {
-		
-		if(hasProduct()){
-			window.canvas2ImagePlugin.saveImageDataToLibrary(
+				window.canvas2ImagePlugin.saveImageDataToLibrary(
 					function(msg){
+						swal("Done","Image saved in "+msg,"success");
+						
+						
 						swal({
 							  title: "Done",
 							  text: "Image saved in "+msg,
@@ -65,9 +66,9 @@
 							  cancelButtonText: "Cancel",
 							  closeOnConfirm: true
 							},
-							function(e){
+							function(){
 							  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
-							  if(e)window.open(canvas.toDataURL(),'_blank', 'location=yes');
+							  window.open(canvas.toDataURL(),'_blank', 'location=yes');
 							});
 					},
 					function(err){
@@ -75,22 +76,6 @@
 					},
 					canvas
 			);
-		}
-		else{
-				swal({
-					  title: "GET PRO !",
-					  text: "You need to upgrade the app to utiliize export feature.",
-					  type: "warning",
-					  showCancelButton: true,
-					  confirmButtonColor: "#DD6B55",
-					  confirmButtonText: "Upgrade",
-					  cancelButtonText: "Later",
-					  closeOnConfirm: true
-					},
-					function(e){
-					  if(e)purchaseProduct('product_easy_export');
-					});
-		}
 		
 	}
 	// Set up mouse events for drawing
