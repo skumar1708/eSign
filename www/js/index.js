@@ -171,7 +171,7 @@ var app = {
 		if(window.hasOwnProperty('hasProduct')){
 			//	alert("hassPro1"+hasProduct('product_easy_export'));
 			//	alert("hassPro1"+!window.hasProduct);
-				if(!window.hasProduct && hasProduct('product_easy_export')){
+				if(existing_purchases.length > 1){
 						window.canvas2ImagePlugin.saveImageDataToLibrary(
 						function(msg){
 							swal({
