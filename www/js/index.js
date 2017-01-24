@@ -72,7 +72,7 @@ var app = {
 				//alert("price: "+p["price"]);
 			}
 		}, function (error){
-			alert("error: "+error);
+			//alert("error: "+error);
 		});
 		
 		
@@ -124,7 +124,7 @@ var app = {
 			alert("purchaseProduct");
 		}, 
 		function (error){
-			alert("error: "+error);
+			//alert("error: "+error);
 		});
 	};
 	 
@@ -134,7 +134,7 @@ var app = {
 			alert("purchaseProduct");
 		}, 
 		function (error){
-			alert("error: "+error);
+			//alert("error: "+error);
 		});	
 	};
 	 
@@ -145,14 +145,14 @@ var app = {
 			for (var i = 0 ; i < result.length; ++i){
 				var p = result[i];
 				
-				if (this.existing_purchases.indexOf(p['productId']) === -1)
-					this.existing_purchases.push(p['productId']);			
+				if (existing_purchases.indexOf(p['productId']) === -1)
+					existing_purchases.push(p['productId']);			
 	 
 				alert("productId: "+p['productId']);
 			}
 		}, 
 		function (error){
-			alert("error: "+error);
+			//alert("error: "+error);
 		});
 	};
 	 
@@ -162,6 +162,8 @@ var app = {
 	
 	var downloadCanvas = function(canvas) {
 			if(window.hasOwnProperty('hasProduct')){
+				alert("hassPro1",hasProduct('product_easy_export'));
+				alert("hassPro1",!window.hasProduct);
 				if(!window.hasProduct && hasProduct('product_easy_export')){
 						window.canvas2ImagePlugin.saveImageDataToLibrary(
 						function(msg){
