@@ -51,7 +51,7 @@
 	
 	});
 	var downloadCanvas = function(canvas) {
-			if(window.hasOwnProperty('hasProduct')){
+			/* if(window.hasOwnProperty('hasProduct')){
 				if(hasProduct('product_easy_export')){
 						window.canvas2ImagePlugin.saveImageDataToLibrary(
 						function(msg){
@@ -88,11 +88,33 @@
 								  closeOnConfirm: true
 								},
 								function(e){
-									//if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
+									if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
 								});
 			}
 			}
-		
+		 */
+						window.canvas2ImagePlugin.saveImageDataToLibrary(
+						function(msg){
+							swal({
+								  title: "Done",
+								  text: "Image saved in "+msg,
+								  type: "success",
+								  showCancelButton: true,
+								  confirmButtonColor: "#DD6B55",
+								  confirmButtonText: "Open",
+								  cancelButtonText: "Cancel",
+								  closeOnConfirm: true
+								},
+								function(){
+								  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+								  window.open(canvas.toDataURL(),'_blank', 'location=yes');
+								});
+						},
+						function(err){
+							alert("Error "+err);
+						},
+						canvas
+					);
 	}
 	// Set up mouse events for drawing
 	var drawing = false;
