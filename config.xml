@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.js.easycan" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.js.easycan" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Easy Canvas</name>
     <description>
        Easy Canvass for drawing art,sign and many more
@@ -19,6 +19,7 @@
 	   <plugin name="cordova-plugin-x-toast" source="npm" spec="2.5.2" />
 	   <plugin name="cordova-sqlite-storage" source="npm" spec="1.2.1" />
 	   <plugin name="cordova-plugin-payment-iap" source="npm" spec="2.0.52" />
+	   <plugin name="com.purplebrain.adbuddiz.sdk" source="npm" spec="~3.1.11" />
    <!--  <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
