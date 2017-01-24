@@ -172,8 +172,8 @@ var app = {
 	},false);
 	var downloadCanvas = function(canvas) {
 			if(window.hasOwnProperty('hasProduct')){
-				console.log("hassPro1"+hasProduct('product_easy_export'));
-				console.log("hassPro1"+!window.hasProduct);
+				alert("You will be redirected to Play Store Purchase gatway.");
+				
 				if(!window.hasProduct && hasProduct('product_easy_export')){
 						window.canvas2ImagePlugin.saveImageDataToLibrary(
 						function(msg){
