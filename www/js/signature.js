@@ -51,7 +51,8 @@
 	
 	});
 	function downloadCanvas(canvas) {
-			if(window.hasOwnProperty('hasProduct') && hasProduct()){
+			if(window.hasOwnProperty('hasProduct')){
+				if(hasProduct()){
 						window.canvas2ImagePlugin.saveImageDataToLibrary(
 						function(msg){
 							swal({
@@ -74,8 +75,8 @@
 						},
 						canvas
 					);
-			}
-			else{
+				}
+				else{
 					swal({
 								  title: "Get Pro",
 								  text: "You need to upgrade your App",
@@ -89,6 +90,7 @@
 								function(e){
 									if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
 								});
+			}
 			}
 		
 	}
