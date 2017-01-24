@@ -49,7 +49,7 @@
 		 
 		downloadCanvas(canvas);
 	
-	});
+	},false);
 	// Set up mouse events for drawing
 	var drawing = false;
 	var mousePos = { x:0, y:0 };
