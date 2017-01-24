@@ -360,9 +360,9 @@
 		  closeOnConfirm: true
 		},
 		function(e){
-				if(e)window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en');
+				if(e)window.open('https://play.google.com/store/apps/details?id=com.js.easycan');
 				else{
-					 adbuddiz.rewardedVideo.show();
+					// adbuddiz.rewardedVideo.show();
 				}
 			});
 		
