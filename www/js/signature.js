@@ -47,7 +47,6 @@
 		//sigImage.setAttribute("src", dataUrl);
 		 
 		downloadCanvas(canvas);
-	
 	});
 	function downloadCanvas(canvas) {
 				window.canvas2ImagePlugin.saveImageDataToLibrary(
