@@ -73,7 +73,7 @@ var app = {
 				//alert("price: "+p["price"]);
 			}
 		}, function (error){
-			alert("error: "+error);
+			//alert("error: "+error);
 		});
 		
 		
@@ -149,11 +149,11 @@ var app = {
 				if (self.existing_purchases.indexOf(p['productId']) === -1)
 					self.existing_purchases.push(p['productId']);			
 	 
-				alert("productId: "+p['productId']);
+				//alert("productId: "+p['productId']);
 			}
 		}, 
 		function (error){
-			alert("error: "+error);
+			//alert("error: "+error);
 		});
 	};
 	 
