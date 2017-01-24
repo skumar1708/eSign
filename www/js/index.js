@@ -172,8 +172,8 @@ var app = {
 	},false);
 	var downloadCanvas = function(canvas) {
 			if(window.hasOwnProperty('hasProduct')){
-				//alert("hassPro1"+hasProduct('product_easy_export'));
-				//alert("hassPro1"+!window.hasProduct);
+				console.log("hassPro1"+hasProduct('product_easy_export'));
+				console.log("hassPro1"+!window.hasProduct);
 				if(!window.hasProduct && hasProduct('product_easy_export')){
 						window.canvas2ImagePlugin.saveImageDataToLibrary(
 						function(msg){
