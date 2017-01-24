@@ -1,5 +1,4 @@
 (function() {
-	
 	// Get a regular interval for drawing to the screen
 	window.requestAnimFrame = (function (callback) {
 		return window.requestAnimationFrame || 
