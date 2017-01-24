@@ -159,3 +159,48 @@ var app = {
 	var  hasProduct = function (productId){
 		return existing_purchases.indexOf(productId) !== -1;
 	};
+	
+	var downloadCanvas = function(canvas) {
+			if(window.hasOwnProperty('hasProduct')){
+				if(hasProduct('product_easy_export')){
+						window.canvas2ImagePlugin.saveImageDataToLibrary(
+						function(msg){
+							swal({
+								  title: "Done",
+								  text: "Image saved in "+msg,
+								  type: "success",
+								  showCancelButton: true,
+								  confirmButtonColor: "#DD6B55",
+								  confirmButtonText: "Open",
+								  cancelButtonText: "Cancel",
+								  closeOnConfirm: true
+								},
+								function(){
+								  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+								  window.open(canvas.toDataURL(),'_blank', 'location=yes');
+								});
+						},
+						function(err){
+							alert("Error "+err);
+						},
+						canvas
+					);
+				}
+				else{
+					swal({
+								  title: "Get Pro",
+								  text: "You need to upgrade your App",
+								  type: "success",
+								  showCancelButton: true,
+								  confirmButtonColor: "#DD6B55",
+								  confirmButtonText: "Upgrade",
+								  cancelButtonText: "Cancel",
+								  closeOnConfirm: true
+								},
+								function(e){
+									if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
+								});
+			}
+			}
+		 
+	}
