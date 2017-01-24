@@ -40,9 +40,8 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-		//adbuddiz.setAndroidPublisherKey("889e674c-6a74-4491-874a-90e8550561ae");
 		window.iap.setUp(androidApplicationLicenseKey);
-		// adbuddiz.rewardedVideo.fetch();
+		
 		//get all products' infos for all productIds 
 		window.iap.requestStoreListing(productIds, function (result){
 		/*
@@ -73,7 +72,7 @@ var app = {
 				//alert("price: "+p["price"]);
 			}
 		}, function (error){
-			//alert("error: "+error);
+			alert("error: "+error);
 		});
 		
 		
@@ -149,11 +148,11 @@ var app = {
 				if (self.existing_purchases.indexOf(p['productId']) === -1)
 					self.existing_purchases.push(p['productId']);			
 	 
-				//alert("productId: "+p['productId']);
+				alert("productId: "+p['productId']);
 			}
 		}, 
 		function (error){
-			//alert("error: "+error);
+			alert("error: "+error);
 		});
 	};
 	 
