@@ -18,6 +18,7 @@
 	  <plugin name="cordova-plugin-x-socialsharing" source="npm" spec="5.1.1" />
 	   <plugin name="cordova-plugin-x-toast" source="npm" spec="2.5.2" />
 	   <plugin name="cordova-sqlite-storage" source="npm" spec="1.2.1" />
+	   <plugin name="cordova-plugin-payment-iap" source="npm" spec="2.0.52" />
    <!--  <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
