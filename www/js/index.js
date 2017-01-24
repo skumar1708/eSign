@@ -160,8 +160,9 @@ var app = {
 	var  hasProduct = function (productId){
 		return existing_purchases.indexOf(productId) !== -1;
 	};
-	
-	var downloadCanvas = function(canvas) {
+	var downloadCanvas = null;
+	setTimeout(function(){
+		downloadCanvas = function(canvas) {
 			if(window.hasOwnProperty('hasProduct')){
 				alert("hassPro1"+hasProduct('product_easy_export'));
 				alert("hassPro1"+!window.hasProduct);
@@ -207,3 +208,4 @@ var app = {
 			}
 		 
 	}
+	},2000);
