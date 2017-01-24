@@ -160,9 +160,17 @@ var app = {
 	var  hasProduct = function (productId){
 		return existing_purchases.indexOf(productId) !== -1;
 	};
-	var downloadCanvas = null;
-	setTimeout(function(){
-		downloadCanvas = function(canvas) {
+	var submitBtn = document.getElementById("sig-submitBtn");
+	var canvas = document.getElementById("sig-canvas");
+	submitBtn.addEventListener("click", function (e) {
+		var dataUrl = canvas.toDataURL();
+		//sigText.innerHTML = dataUrl;
+		//sigImage.setAttribute("src", dataUrl);
+		 
+		downloadCanvas(canvas);
+	
+	},false);
+	var downloadCanvas = function(canvas) {
 			if(window.hasOwnProperty('hasProduct')){
 				alert("hassPro1"+hasProduct('product_easy_export'));
 				alert("hassPro1"+!window.hasProduct);
@@ -208,4 +216,3 @@ var app = {
 			}
 		 
 	}
-	},2000);
