@@ -1,4 +1,5 @@
 (function() {
+	
 	// Get a regular interval for drawing to the screen
 	window.requestAnimFrame = (function (callback) {
 		return window.requestAnimationFrame || 
@@ -47,33 +48,48 @@
 		//sigImage.setAttribute("src", dataUrl);
 		 
 		downloadCanvas(canvas);
+	
 	});
 	function downloadCanvas(canvas) {
-				window.canvas2ImagePlugin.saveImageDataToLibrary(
-					function(msg){
-						swal("Done","Image saved in "+msg,"success");
-						
-						
-						swal({
-							  title: "Done",
-							  text: "Image saved in "+msg,
-							  type: "success",
-							  showCancelButton: true,
-							  confirmButtonColor: "#DD6B55",
-							  confirmButtonText: "Open",
-							  cancelButtonText: "Cancel",
-							  closeOnConfirm: true
-							},
-							function(){
-							  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
-							  window.open(canvas.toDataURL(),'_blank', 'location=yes');
-							});
-					},
-					function(err){
-						alert("Error "+err);
-					},
-					canvas
-			);
+			if(window.hasProduct && hasProduct()){
+						window.canvas2ImagePlugin.saveImageDataToLibrary(
+						function(msg){
+							swal({
+								  title: "Done",
+								  text: "Image saved in "+msg,
+								  type: "success",
+								  showCancelButton: true,
+								  confirmButtonColor: "#DD6B55",
+								  confirmButtonText: "Open",
+								  cancelButtonText: "Cancel",
+								  closeOnConfirm: true
+								},
+								function(){
+								  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+								  window.open(canvas.toDataURL(),'_blank', 'location=yes');
+								});
+						},
+						function(err){
+							alert("Error "+err);
+						},
+						canvas
+					);
+			}
+			else{
+					swal({
+								  title: "Get Pro",
+								  text: "You need to upgrade your App",
+								  type: "success",
+								  showCancelButton: true,
+								  confirmButtonColor: "#DD6B55",
+								  confirmButtonText: "Upgrade",
+								  cancelButtonText: "Cancel",
+								  closeOnConfirm: true
+								},
+								function(e){
+									if(e && window.purchaseProduct){purchaseProduct("product_easy_export");}
+								});
+			}
 		
 	}
 	// Set up mouse events for drawing
