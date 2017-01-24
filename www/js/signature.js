@@ -51,7 +51,7 @@
 	
 	});
 	function downloadCanvas(canvas) {
-			if(window.hasProduct && hasProduct()){
+			if(window.hasOwnProperty('hasProduct') && hasProduct()){
 						window.canvas2ImagePlugin.saveImageDataToLibrary(
 						function(msg){
 							swal({
@@ -87,7 +87,7 @@
 								  closeOnConfirm: true
 								},
 								function(e){
-									if(e && window.purchaseProduct){purchaseProduct("product_easy_export");}
+									if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
 								});
 			}
 		
