@@ -52,7 +52,7 @@
 	});
 	function downloadCanvas(canvas) {
 			if(window.hasOwnProperty('hasProduct')){
-				if(hasProduct()){
+				if(hasProduct('product_easy_export')){
 						window.canvas2ImagePlugin.saveImageDataToLibrary(
 						function(msg){
 							swal({
