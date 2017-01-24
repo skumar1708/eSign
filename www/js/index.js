@@ -138,7 +138,7 @@ var app = {
 		});	
 	};
 	 
-	var restorePurchases function() {
+	var restorePurchases = function() {
 		alert('GETTING PURCHASED INFOS');
 		//get user's purchased product ids which purchased before and not cunsumed. 
 		window.iap.restorePurchases(function (result){
