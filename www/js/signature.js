@@ -88,7 +88,7 @@
 					  closeOnConfirm: true
 					},
 					function(e){
-					  if(e)purchaseProduct('product_easy_export";');
+					  if(e)purchaseProduct('product_easy_export');
 					});
 		}
 		
@@ -352,7 +352,7 @@
 		var id = "EasyCan|"+date;
 		swal({
 		  title: "EasyCanvas Saved!",
-		  text: "Would you mind in ratting us on Google Play ?",
+		  text: "Would you mind in ratin us on Google Play ?",
 		  type: "success",
 		  showCancelButton: true,
 		  confirmButtonColor: "#DD6B55",
