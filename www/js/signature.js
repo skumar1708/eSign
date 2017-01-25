@@ -313,7 +313,8 @@
 		  closeOnConfirm: true
 		},
 		function(e){
-				if(e)window.open('https://play.google.com/store/apps/details?id=com.js.easycan');
+				if(e){window.open('https://play.google.com/store/apps/details?id=com.js.easycan');}
+				else{window.adbuddiz.showInterstitialAd();}
 			});
 		
 		var src = canvas.toDataURL();
