@@ -53,6 +53,7 @@
 		lastPos = getMousePos(canvas, e);
 	}, false);
 	canvas.addEventListener("mouseup", function (e) {
+		CANVAS_GLOBAL_URL = canvas.toDataURL();
 		drawing = false;
 	}, false);
 	canvas.addEventListener("mousemove", function (e) {
@@ -323,19 +324,31 @@
 		$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
 	});
 	$('#share').on('click',function(){
-		console.log(canvas.toDataURL("image/png"));
-		ctx.font = "17px 'Indie Flower', cursive";
+		//console.log(canvas.toDataURL("image/png"));
+		//ctx.font = "17px 'Indie Flower', cursive";
 		// Create gradient
-		var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+		/* var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
 		gradient.addColorStop("0", "magenta");
 		gradient.addColorStop("0.5", "blue");
 		gradient.addColorStop("1.0", "red");
 		// Fill with gradient
 		ctx.fillStyle = gradient;
-		ctx.fillText("created by EasyCanvas", 10, 20);
-		//window.open('https://play.google.com/store/apps/details?id=air.HealthApp&hl=en')
+		ctx.fillText("created by EasyCanvas", 10, 20); */
+		
+		   var c = document.getElementById("sig-canvas");
+			var ctx = c.getContext("2d");
+			var img = new Image();
+				img.onload = function() {
+				  ctx.drawImage(this, 0, 0,100,44);
+				};
+
+				img.src = "../img/canback.png";
+			
 		//window.plugins.toast.show('Hello there!', 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
 		 var data = canvas.toDataURL("image/png");
+		 
+		 console.log("CURRENT IS "+data);
+		 console.log("GLOBAL URL IS  "+CANVAS_GLOBAL_URL);
 		  		  
 		 var options = {
 			  message: 'share this', // not supported on some apps (Facebook, Instagram)
@@ -345,13 +358,28 @@
 			}
 
 		var onSuccess = function(result) {
-			 var canColor = $('#tButton').css('background-color');
+			  /* var canColor = $('#tButton').css('background-color');
 			  ctx.fillStyle = canColor;
-			  ctx.fillRect(8,8,150,20);
+			  ctx.fillRect(8,8,150,20); */ 
+			  
+			  var imageObj = new Image();
+				imageObj.onload = function() {
+				  ctx.drawImage(this, 0, 0);
+				};
+
+				imageObj.src = CANVAS_GLOBAL_URL; 
+			  
+			  
 		}
 
 		var onError = function(msg) {
 		 options = {};
+		 var imageObj = new Image();
+				imageObj.onload = function() {
+				  ctx.drawImage(this, 0, 0);
+				};
+
+				imageObj.src = CANVAS_GLOBAL_URL; 
 		}
 		window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
 		delete options.files;
