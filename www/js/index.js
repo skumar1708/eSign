@@ -154,7 +154,8 @@ var app = {
 		//get user's purchased product ids which purchased before and not cunsumed. 
 		var restoreAble = false;
 		window.iap.restorePurchases(function (result){
-			if(result.length > 1){restoreAble = true;}
+			alert('result length is '+result.length);
+			if(result.length >=1){restoreAble = true;}
 			/* for (var i = 0 ; i < result.length; ++i){
 				var p = result[i];
 				
