@@ -87,35 +87,12 @@ var app = {
 		 console.log("ad buddiz is ",window.adbuddiz);
 		 
 		 window.adbuddiz.setUp(publisherKey);
-	
-		window.adbuddiz.onInterstitialAdPreloaded = function() {
-			alert('onInterstitialAdPreloaded');
-		};
-		window.adbuddiz.onInterstitialAdLoaded = function() {
-			alert('onInterstitialAdLoaded');
-		};
-		window.adbuddiz.onInterstitialAdShown = function() {
-			alert('onInterstitialAdShown');
-		};
-		window.adbuddiz.onInterstitialAdHidden = function() {
-			alert('onInterstitialAdHidden');
-		};
-		//
-		window.adbuddiz.onRewardedVideoAdPreloaded = function() {
-			alert('onRewardedVideoAdPreloaded');
-		};
-		window.adbuddiz.onRewardedVideoAdLoaded = function() {
-			alert('onRewardedVideoAdLoaded');
-		};
-		window.adbuddiz.onRewardedVideoAdShown = function() {
-			alert('onRewardedVideoAdShown');
-		};
-		window.adbuddiz.onRewardedVideoAdHidden = function() {
-			alert('onRewardedVideoAdHidden');
-		};	
-		window.adbuddiz.onRewardedVideoAdCompleted = function() {
-			alert('onRewardedVideoAdCompleted');
-		};	
+		
+		window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
+		//window.adbuddiz.showInterstitialAd();
+
+		window.adbuddiz.preloadRewardedVideoAd();//option, download ad previously for fast show
+		//window.adbuddiz.showRewardedVideoAd();
 		
 		document.addEventListener("backbutton", onBackKeyDown, true);
         app.receivedEvent('deviceready');
