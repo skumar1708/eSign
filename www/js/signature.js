@@ -271,7 +271,7 @@
 				};
 
 				imageObj.src = $(can).attr('src'); 
-				
+				CANVAS_GLOBAL_URL = $(can).attr('src'); 
 				toggle_sidebar.call(null);
 			});
       
