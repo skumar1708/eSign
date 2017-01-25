@@ -166,7 +166,7 @@ var app = {
 		return existing_purchases.indexOf(productId) !== -1;
 	};
 	var submitBtn = document.getElementById("sig-submitBtn");
-	var canvas = document.getElementById("sig-canvas");
+	var canvas = document.getElementById("sig-canvas")
 	submitBtn.addEventListener("click", function (e) {
 		var dataUrl = canvas.toDataURL();
 		//sigText.innerHTML = dataUrl;
@@ -203,7 +203,7 @@ var app = {
 					else{
 						swal({
 									  title: "Get Pro",
-									  text: "You need to upgrade your App",
+									  text: "This app required an upgrade to download this Image.",
 									  type: "success",
 									  showCancelButton: true,
 									  confirmButtonColor: "#DD6B55",
