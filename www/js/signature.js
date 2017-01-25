@@ -285,7 +285,8 @@
 		  type: "warning",
 		  showCancelButton: true,
 		  confirmButtonColor: "#DD6B55",
-		  confirmButtonText: "OK",
+		  confirmButtonText: "Yes",
+		  cancelButtonText: "No",
 		  closeOnConfirm: true
 		},
 		function(e){
