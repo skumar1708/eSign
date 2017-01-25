@@ -346,15 +346,15 @@
 				img.src = "img/canback.png";
 			
 		//window.plugins.toast.show('Hello there!', 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
-		 var data = canvas.toDataURL("image/png");
+		 var data = c.toDataURL("image/png");
 		 
 		// console.log("CURRENT IS "+data);
 		 //console.log("GLOBAL URL IS  "+CANVAS_GLOBAL_URL);
 		  		  
 		 var options = {
-			  message: 'share this', // not supported on some apps (Facebook, Instagram)
+			  message: 'Download the app here https://play.google.com/store/apps/details?id=com.js.easycan  and  start painting, its EasyCan !', // not supported on some apps (Facebook, Instagram)
 			  subject: 'the subject', // fi. for email
-			  files: [canvas.toDataURL("image/png")], // an array of filenames either locally or remotely
+			  files: [c.toDataURL("image/png")], // an array of filenames either locally or remotely
 			  chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
 			}
 
