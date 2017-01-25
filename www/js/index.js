@@ -141,74 +141,78 @@ var app = {
 	var restorePurchases = function() {
 		//alert('GETTING PURCHASED INFOS');
 		//get user's purchased product ids which purchased before and not cunsumed. 
+		var restoreAble = false;
 		window.iap.restorePurchases(function (result){
-			for (var i = 0 ; i < result.length; ++i){
+			if(result.length > 1){restoreAble = true;}
+			/* for (var i = 0 ; i < result.length; ++i){
 				var p = result[i];
 				
 				if (existing_purchases.indexOf(p['productId']) === -1)
 					existing_purchases.push(p['productId']);			
-					existing_purchases.push('success');				
+	 
 				alert("productId: "+p['productId']);
-			}
+			} */
 		}, 
 		function (error){
-			existing_purchases.push('error');
-			alert("error: "+error);
+			restoreAble = false;
+			//existing_purchases.push('error');
+			//alert("error: "+error);
 		});
+		
+		return restoreAble;
 	};
 	 
 	var  hasProduct = function (productId){
 		return existing_purchases.indexOf(productId) !== -1;
 	};
 	var submitBtn = document.getElementById("sig-submitBtn");
-	var canvas = document.getElementById("sig-canvas");
 	submitBtn.addEventListener("click", function (e) {
 		var dataUrl = canvas.toDataURL();
 		//sigText.innerHTML = dataUrl;
 		//sigImage.setAttribute("src", dataUrl);
 		 
-		//downloadCanvas(canvas);
-		
-			//	alert("hassPro1"+hasProduct('product_easy_export'));
-			//	alert("hassPro1"+!window.hasProduct);
-				if(existing_purchases.length > 1){
-						window.canvas2ImagePlugin.saveImageDataToLibrary(
-						function(msg){
-							swal({
-								  title: "Done",
-								  text: "Image saved in "+msg,
-								  type: "success",
-								  showCancelButton: true,
-								  confirmButtonColor: "#DD6B55",
-								  confirmButtonText: "Open",
-								  cancelButtonText: "Cancel",
-								  closeOnConfirm: true
-								},
-								function(){
-								  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
-								  window.open(canvas.toDataURL(),'_blank', 'location=yes');
-								});
-						},
-						function(err){
-							alert("Error "+err);
-						},
-						canvas
-					);
-				}
-				else{
-					swal({
-								  title: "Go Pro",
-								  text: "You need to upgrade your App",
-								  type: "success",
-								  showCancelButton: true,
-								  confirmButtonColor: "#DD6B55",
-								  confirmButtonText: "Upgrade",
-								  cancelButtonText: "Cancel",
-								  closeOnConfirm: true
-								},
-								function(e){
-									if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
-								});
-			}
+		downloadCanvas(canvas);
 	
 	},false);
+	var downloadCanvas = function(canvas) {
+					if(restorePurchases.call(null)){
+							window.canvas2ImagePlugin.saveImageDataToLibrary(
+							function(msg){
+								swal({
+									  title: "Done",
+									  text: "Image saved in "+msg,
+									  type: "success",
+									  showCancelButton: true,
+									  confirmButtonColor: "#DD6B55",
+									  confirmButtonText: "Open",
+									  cancelButtonText: "Cancel",
+									  closeOnConfirm: true
+									},
+									function(){
+									  //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+									  window.open(canvas.toDataURL(),'_blank', 'location=yes');
+									});
+							},
+							function(err){
+								alert("Error "+err);
+							},
+							canvas
+						);
+					}
+					else{
+						swal({
+									  title: "Get Pro",
+									  text: "You need to upgrade your App",
+									  type: "success",
+									  showCancelButton: true,
+									  confirmButtonColor: "#DD6B55",
+									  confirmButtonText: "Upgrade",
+									  cancelButtonText: "Cancel",
+									  closeOnConfirm: true
+									},
+									function(e){
+										if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
+									});
+				}
+		 
+	}
