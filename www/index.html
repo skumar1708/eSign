@@ -79,7 +79,7 @@
 			<div class="modal-body">
 			  <img src="img/easy-splash.png"><span id="splashTitle">Easy Canvas</span>
 			  
-			  <div id="splashQoute"><qoute>" Every painting is a voyage into a sacred harbour."</qoute></div>
+			  <div id="splashQoute"><qoute></qoute></div>
 			</div>
 			
 			
@@ -245,9 +245,22 @@
 </body>
 <script>
 		$(document).ready(function(){
-			
+				var qoutes = [
+						"Painting is just another way of keeping a diary.",
+						"I dream a lot. I do more painting when I'm not painting.It's in the subconscious.",
+						"Painting from nature is not copying the object; it is realizing one's sensations.",
+						"Every painting is a voyage into a sacred harbour.",
+						"Painting is easy when you don't know how, but very difficult when you do.",
+						"Art,undeniably,is conductive to happiness",
+						"Creativity takes courage",
+						"Art washes away from the soul the dust of everyday life.",
+						"Art is not what you see, but what you make others see."
+						];
+			var index = Math.floor(Math.random() * (qoutes.length));
+			var q = `" ${qoutes[index]} "`;
 				$("#myModal").modal();
 				//$("#myModalQoute").modal();
+				$('qoute').html(q);
 				
 				$('#myModal').attr('width',$(window).width()-40);
 				$('#myModal').attr('height',$(window).height()-65);
