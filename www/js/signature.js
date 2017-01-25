@@ -290,10 +290,12 @@
 		  closeOnConfirm: true
 		},
 		function(e){
-				console.log('delete cancel',e);
-				localStorage.removeItem($(thisItem).attr('id'));
-				$(thisItem).closest('li').remove();
-				toggle_sidebar.call(null);
+				if(e){
+					console.log('delete cancel',e);
+					localStorage.removeItem($(thisItem).attr('id'));
+					$(thisItem).closest('li').remove();
+					toggle_sidebar.call(null);
+				}
 			});
       
 	});
