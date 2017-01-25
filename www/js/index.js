@@ -17,7 +17,7 @@
  * under the License.
  */
  
- 
+ var CANVAS_GLOBAL_URL = "";
  var androidApplicationLicenseKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyWuTJQClo0zEUXsxqBtAfj1BeUUF6lvpNG6zzzHJcss3YWK6XUuegy/eUvJgDO0L1yY1xhcC/beyGXEW/is7Ua5DMPx+IzqUFFtrx/xp32c5JB27p6XajqsvqkVXBV76UQLnaO5afNVR4gQquuIS72MceH9D5x4nvbZOh1vtEBVhmCoXMXeZ4VvISQ3gxGuNXnMl/p0sWM6gb5qfN5YjLCGTU8BhpazBQnqu4dqGLlLokpMGGkMogh8/LrF7dSZfbeSsZcZkY9h15gsDzlc41lMGgbQ5EkKUbHxCQQKfdfrsFJEFiD0cmRC9jB9bu47M+p8F8lYIiAu3ICeH0WkmMwIDAQAB";
 var productIds = "product_easy_export";
 var existing_purchases = [];
@@ -132,7 +132,8 @@ var app = {
 		//alert('PURCHASING PRODUCT FROM PLAY STORE');
 		//purchase product id, put purchase product id info into server. 
 		window.iap.purchaseProduct(productId, function (result){
-			alert("purchaseProduct");
+			localStorage.setItem('restorable','purchased');
+			alert("Product purchased,please do not clear app cache.");
 		}, 
 		function (error){
 			//alert("error: "+error);
@@ -188,7 +189,7 @@ var app = {
 	
 	},false);
 	var downloadCanvas = function(canvas) {
-					if(restorePurchases.call(null)){
+					if(null !== localStorage.getItem('restorable')){
 							window.canvas2ImagePlugin.saveImageDataToLibrary(
 							function(msg){
 								swal({
@@ -224,7 +225,9 @@ var app = {
 									  closeOnConfirm: true
 									},
 									function(e){
-										if(e && window.hasOwnProperty('purchaseProduct')){purchaseProduct("product_easy_export");}
+										if(e && window.hasOwnProperty('purchaseProduct')){
+											purchaseProduct("product_easy_export");
+										}
 									});
 				}
 		 
