@@ -339,16 +339,17 @@
 			var ctx = c.getContext("2d");
 			var img = new Image();
 				img.onload = function() {
-				  ctx.drawImage(this, 0, 0,100,44);
+					console.log("image onload");
+				  ctx.drawImage(this, c.width-100, c.height-44,100,44);
 				};
 
-				img.src = "../img/canback.png";
+				img.src = "img/canback.png";
 			
 		//window.plugins.toast.show('Hello there!', 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
 		 var data = canvas.toDataURL("image/png");
 		 
-		 console.log("CURRENT IS "+data);
-		 console.log("GLOBAL URL IS  "+CANVAS_GLOBAL_URL);
+		// console.log("CURRENT IS "+data);
+		 //console.log("GLOBAL URL IS  "+CANVAS_GLOBAL_URL);
 		  		  
 		 var options = {
 			  message: 'share this', // not supported on some apps (Facebook, Instagram)
@@ -381,9 +382,9 @@
 
 				imageObj.src = CANVAS_GLOBAL_URL; 
 		}
-		window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+		//window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
 		delete options.files;
-		ctx.stroke();
+		//ctx.stroke();
 		  
 	});
 	// Allow for animation
