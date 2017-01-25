@@ -22,7 +22,7 @@
 var productIds = "product_easy_export";
 var existing_purchases = [];
 var product_info = {};
- 
+ var publisherKey = "889e674c-6a74-4491-874a-90e8550561ae";
 var app = {
     // Application Constructor
     initialize: function() {
@@ -82,9 +82,43 @@ var app = {
 		}, function() {
 		  console.log('fail')
 		}); */
+		 //screen.lockOrientation('landscape'); //this is the new line
+		 
+		 console.log("ad buddiz is ",window.adbuddiz);
+		 
+		 window.adbuddiz.setUp(publisherKey);
+	
+		window.adbuddiz.onInterstitialAdPreloaded = function() {
+			alert('onInterstitialAdPreloaded');
+		};
+		window.adbuddiz.onInterstitialAdLoaded = function() {
+			alert('onInterstitialAdLoaded');
+		};
+		window.adbuddiz.onInterstitialAdShown = function() {
+			alert('onInterstitialAdShown');
+		};
+		window.adbuddiz.onInterstitialAdHidden = function() {
+			alert('onInterstitialAdHidden');
+		};
+		//
+		window.adbuddiz.onRewardedVideoAdPreloaded = function() {
+			alert('onRewardedVideoAdPreloaded');
+		};
+		window.adbuddiz.onRewardedVideoAdLoaded = function() {
+			alert('onRewardedVideoAdLoaded');
+		};
+		window.adbuddiz.onRewardedVideoAdShown = function() {
+			alert('onRewardedVideoAdShown');
+		};
+		window.adbuddiz.onRewardedVideoAdHidden = function() {
+			alert('onRewardedVideoAdHidden');
+		};	
+		window.adbuddiz.onRewardedVideoAdCompleted = function() {
+			alert('onRewardedVideoAdCompleted');
+		};	
+		
 		document.addEventListener("backbutton", onBackKeyDown, true);
         app.receivedEvent('deviceready');
-		 //screen.lockOrientation('landscape'); //this is the new line
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
