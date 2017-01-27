@@ -270,8 +270,9 @@
 				  context.drawImage(this, 0, 0);
 				};
 
-				imageObj.src = $(can).attr('src'); 
-				CANVAS_GLOBAL_URL = $(can).attr('src'); 
+				imageObj.src = $(can).attr('src');
+				CANVAS_GLOBAL_URL = $(can).attr('src');
+				
 				toggle_sidebar.call(null);
 			});
       
@@ -336,23 +337,23 @@
 		ctx.fillText("created by EasyCanvas", 10, 20); */
 		
 		   var c = document.getElementById("sig-canvas");
-			var ctx = c.getContext("2d");
-			var img = new Image();
-				img.onload = function() {
+			var ctx_tmp = c.getContext("2d");
+			var img = document.getElementById('marketingLogo');
+				/* img.onload = function() {
 					console.log("image onload");
-				  ctx.drawImage(this, c.width-100, c.height-44,100,44);
-				};
-
-				img.src = "img/canback.png";
+					console.log("CURRENT IS "+c.toDataURL("image/png"));
+				  ctx_tmp.drawImage(this, c.width-100, c.height-44,100,44);
+				}; */
+				ctx_tmp.drawImage(img, c.width-100, c.height-44,100,44);
+				//img.src = "img/canback.png";
 			
 		//window.plugins.toast.show('Hello there!', 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
 		 var data = c.toDataURL("image/png");
-		 
-		// console.log("CURRENT IS "+data);
-		 //console.log("GLOBAL URL IS  "+CANVAS_GLOBAL_URL);
+		 console.log("CURRENT IS "+c.toDataURL("image/png"));
+		//console.log("GLOBAL URL IS  "+CANVAS_GLOBAL_URL);
 		  		  
 		 var options = {
-			  message: 'Download the app here https://play.google.com/store/apps/details?id=com.js.easycan  and  start painting, its EasyCan !', // not supported on some apps (Facebook, Instagram)
+			  message: 'Download the app here https://play.google.com/store/apps/details?id=com.js.easycan and start painting, its really easy EasyCan', // not supported on some apps (Facebook, Instagram)
 			  subject: 'the subject', // fi. for email
 			  files: [c.toDataURL("image/png")], // an array of filenames either locally or remotely
 			  chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
