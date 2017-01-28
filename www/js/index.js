@@ -85,8 +85,7 @@ var app = {
 		 //screen.lockOrientation('landscape'); //this is the new line
 		 
 		 // For Fullscreen:
-		fullscreen = Fullscreen('57a0f7a9-e7aa-4bd7-ab9c-b3f6619e5c79');
-		fullscreen.loadAd();
+		 Fullscreen('57a0f7a9-e7aa-4bd7-ab9c-b3f6619e5c79').loadAd().showAd(onSuccess,onError);;
 		
 		var onSuccess = function(){
 			alert("Ad loaded + show");
@@ -94,7 +93,7 @@ var app = {
 		var onError = function(response){
 			alert("Show ad error: "+response);
 		}
-		fullscreen.showAd(onSuccess,onError);
+		
 		 
 		 window.adbuddiz.setUp(publisherKey);
 		
