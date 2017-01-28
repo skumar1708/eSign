@@ -318,19 +318,14 @@
 		  closeOnConfirm: true
 		},
 		function(e){
-				if(e){window.open('https://play.google.com/store/apps/details?id=com.js.easycan');}
-				else{
+				if(e){
 					
-					//window.adbuddiz.showInterstitialAd();
-					
-						var onSuccess = function(){
-							alert("Ad loaded + show");
-						}
-						var onError = function(response){
-							alert("Show ad error: "+response);
-						}
-						fullscreen.showAd(onSuccess,onError);
+					//window.open('https://play.google.com/store/apps/details?id=com.js.easycan');
+					LaunchReview.launch('com.js.easycan', function(){
+						console.log("Successfully launched store app");
+					});
 					}
+				else{window.adbuddiz.showInterstitialAd();}
 			});
 		
 		var src = canvas.toDataURL();
