@@ -84,17 +84,6 @@ var app = {
 		}); */
 		 //screen.lockOrientation('landscape'); //this is the new line
 		 
-		 // For Fullscreen:
-		 Fullscreen('57a0f7a9-e7aa-4bd7-ab9c-b3f6619e5c79').loadAd().showAd(onSuccess,onError);;
-		
-		var onSuccess = function(){
-			alert("Ad loaded + show");
-		}
-		var onError = function(response){
-			alert("Show ad error: "+response);
-		}
-		
-		 
 		 window.adbuddiz.setUp(publisherKey);
 		
 		window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
