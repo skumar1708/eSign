@@ -23,8 +23,10 @@
 	var opacity = 100;
 	var dataURL = '';
 	var ctx = canvas.getContext("2d");
-	ctx.lineCap ='round';
+	//ctx.lineCap ='round';
 	ctx.strokeStyle = '#000';
+	ctx.globalAppha = 0.5;
+	ctx.lineJoin = "round";
 	ctx.lineWidth = lineWidth;
 	ctx.fillStyle = '#fff';
 	ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -125,21 +127,22 @@
 			if(tool=='pencil'){
 				//console.log('drawing');
 				ctx.beginPath();
-
-				ctx.lineCap =  'round';
+				 ctx.lineJoin = 'round';
+				if(opacity == 100){
+					ctx.lineCap =  'round';
+				}
+				else{
+					ctx.lineCap =  'butt';
+				}
 				if(!isDirty){
 					ctx.strokeStyle = $('#penButton').css('background-color').replace('rgb','rgba').replace(')',','+opacity/100+')');
 				}
 				ctx.fillStyle = $('#tButton').css('background-color');
 				ctx.moveTo(lastPos.x, lastPos.y);
-				
-				var c = (lastPos.x+mousePos.x)/2;
-				var d = (lastPos.y+mousePos.y)/2;
-				//ctx.quadraticCurveTo(mousePos.x, mousePos.y, c, d)
 				ctx.lineTo(mousePos.x, mousePos.y);
 				ctx.stroke();
 				lastPos = mousePos;
-				//ctx.closePath();
+				ctx.closePath();
 			}
 			else{
 				var mouseX = mousePos.x;
@@ -238,8 +241,8 @@
 		console.log('changing pen ',pencolor);
 		ctx.strokeStyle = pencolor;
 		ctx.lineWidth = lineWidth;
-		 ctx.shadowColor = pencolor;
-		 ctx.stroke();
+		 //ctx.shadowColor = pencolor;
+		 //ctx.stroke();
 	}
 	
 	$('#erase').on('click',function(){
@@ -316,7 +319,18 @@
 		},
 		function(e){
 				if(e){window.open('https://play.google.com/store/apps/details?id=com.js.easycan');}
-				else{window.adbuddiz.showInterstitialAd();}
+				else{
+					
+					//window.adbuddiz.showInterstitialAd();
+					
+						var onSuccess = function(){
+							alert("Ad loaded + show");
+						}
+						var onError = function(response){
+							alert("Show ad error: "+response);
+						}
+						fullscreen.showAd(onSuccess,onError);
+					}
 			});
 		
 		var src = canvas.toDataURL();
@@ -401,7 +415,7 @@
 			$('canvas').attr('height',$(window).height()-65);
 		}
 		
-		ctx.lineCap =  'round';
+		//ctx.lineCap =  'round';
 		ctx.strokeStyle = STROKESTYLE;
 		ctx.lineWidth = lineWidth;
 		ctx.fillStyle = FILLSTYLE
