@@ -85,7 +85,7 @@ var app = {
 		 //screen.lockOrientation('landscape'); //this is the new line
 		 
 		 // For Fullscreen:
-		fullscreen = new Appnext.Fullscreen('57a0f7a9-e7aa-4bd7-ab9c-b3f6619e5c79');
+		fullscreen = Fullscreen('57a0f7a9-e7aa-4bd7-ab9c-b3f6619e5c79');
 		fullscreen.loadAd();
 		
 		var onSuccess = function(){
