@@ -11,7 +11,6 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
 	<preference name="orientation" value="landscape" />
-	<!-- <preference name="SplashScreen" value="res/screen/android/easy-splash.png" /> -->
 	<preference name="SplashScreenDelay" value="1000" />
 	 <plugin name="cordova-plugin-backbutton" source="npm" spec="~0.3.0" />
 	 <plugin name="cordova-plugin-canvas2image" source="npm" spec="~0.7.0" />
