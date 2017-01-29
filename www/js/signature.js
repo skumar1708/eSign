@@ -321,9 +321,9 @@
 				if(e){
 					
 					//window.open('https://play.google.com/store/apps/details?id=com.js.easycan');
-					LaunchReview.launch('com.js.easycan', function(){
-						console.log("Successfully launched store app");
-					});
+						LaunchReview.launch('com.js.easycan', function(){
+							console.log("Successfully launched store app");
+						});
 					}
 				else{window.adbuddiz.showInterstitialAd();}
 			});
