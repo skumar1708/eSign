@@ -83,8 +83,6 @@ var app = {
 		}); */
 		 //screen.lockOrientation('landscape'); //this is the new line
 		 
-		  // Set AdMobAds options: 
-		 
 		 window.adbuddiz.setUp(publisherKey);
 		
 		window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
@@ -109,28 +107,21 @@ var app = {
     }
 };
     function onBackKeyDown(e) {
-		
-		if($(".container").css('display')=='none'){
-			swal({
-				  title: "Are you sure want to Exit?",
-				  text: "Unsaved work will be lost !",
-				  type: "warning",
-				  width:100,
-				  height:100,
-				  showCancelButton: true,
-				  confirmButtonColor: "#DD6B55",
-				  confirmButtonText: "Yes",
-				  cancelButtonText: "No",
-				  closeOnConfirm: true
-				},
-				function(e){
-						if(e) navigator.app.exitApp();
+		swal({
+		  title: "Are you sure want to Exit?",
+		  text: "Unsaved work will be lost !",
+		  type: "warning",
+		  width:100,
+		  height:100,
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "Yes",
+		  cancelButtonText: "No",
+		  closeOnConfirm: true
+		},
+		function(e){
+				if(e) navigator.app.exitApp();
 			});
-		}
-		else{
-			$(".container").css('display','none');
-			$("#myModal").modal('show');
-		}
     }
 	
 	
