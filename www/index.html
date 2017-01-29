@@ -67,11 +67,14 @@
 		}
 		#morePanel{
 			    display: inline;
-				margin-top: 0px;
+				margin-top: -3px;
 				float: left;
 				left: -200px;
 				position: fixed;
 				transition: all 0.5s ease-in-out;
+		}
+		#more{
+			transition: all 0.6s;
 		}
 	</style>
     <title>EasyCanvas</title>
@@ -228,9 +231,11 @@
         }
 			$('#more').on('click',function(){
 				if($('#morePanel').css('left') == '-200px'){
+						$('#more').css('transform','rotateZ(135deg)');
 						$('#morePanel').css('left','55px');
 				}else{
 					$('#morePanel').css('left','-200px');
+					$('#more').css('transform','rotateZ(0deg)');
 				}
 			});
 		//function hide_sidebar()
@@ -246,8 +251,7 @@
     </script>
 </body>
 <script>
-		$(document).ready(function(){	
-				var qoutes = [
+		var qoutes = [
 						"Painting is just another way of keeping a diary.",
 						"I dream a lot. I do more painting when I'm not painting.It's in the subconscious.",
 						"Painting from nature is not copying the object; it is realizing one's sensations.",
@@ -258,6 +262,7 @@
 						"Art washes away from the soul the dust of everyday life.",
 						"Art is not what you see, but what you make others see."
 						];
+		$(document).ready(function(){	
 			var index = Math.floor(Math.random() * (qoutes.length));
 			var q = `" ${qoutes[index]} "`;
 				$("#myModal").modal();
