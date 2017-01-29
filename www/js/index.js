@@ -84,15 +84,6 @@ var app = {
 		 //screen.lockOrientation('landscape'); //this is the new line
 		 
 		  // Set AdMobAds options: 
-      admob.setOptions({
-        publisherId:          "ca-app-pub-2719433654677048/5324386012"  // Required 
-      });
-      
-      // Start showing banners (atomatic when autoShowBanner is set to true) 
-      admob.createBannerView();
-      
-      // Request interstitial (will present automatically when autoShowInterstitial is set to true) 
-      admob.requestInterstitialAd();
 		 
 		 window.adbuddiz.setUp(publisherKey);
 		
