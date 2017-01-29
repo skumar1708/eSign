@@ -1,4 +1,21 @@
-
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
  var CANVAS_GLOBAL_URL = "";
  var androidApplicationLicenseKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyWuTJQClo0zEUXsxqBtAfj1BeUUF6lvpNG6zzzHJcss3YWK6XUuegy/eUvJgDO0L1yY1xhcC/beyGXEW/is7Ua5DMPx+IzqUFFtrx/xp32c5JB27p6XajqsvqkVXBV76UQLnaO5afNVR4gQquuIS72MceH9D5x4nvbZOh1vtEBVhmCoXMXeZ4VvISQ3gxGuNXnMl/p0sWM6gb5qfN5YjLCGTU8BhpazBQnqu4dqGLlLokpMGGkMogh8/LrF7dSZfbeSsZcZkY9h15gsDzlc41lMGgbQ5EkKUbHxCQQKfdfrsFJEFiD0cmRC9jB9bu47M+p8F8lYIiAu3ICeH0WkmMwIDAQAB";
 var productIds = "product_easy_export";
@@ -66,6 +83,8 @@ var app = {
 		}); */
 		 //screen.lockOrientation('landscape'); //this is the new line
 		 
+		  // Set AdMobAds options: 
+		 
 		 window.adbuddiz.setUp(publisherKey);
 		
 		window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
@@ -90,21 +109,28 @@ var app = {
     }
 };
     function onBackKeyDown(e) {
-		swal({
-		  title: "Are you sure want to Exit?",
-		  text: "Unsaved work will be lost !",
-		  type: "warning",
-		  width:100,
-		  height:100,
-		  showCancelButton: true,
-		  confirmButtonColor: "#DD6B55",
-		  confirmButtonText: "Yes",
-		  cancelButtonText: "No",
-		  closeOnConfirm: true
-		},
-		function(e){
-				if(e) navigator.app.exitApp();
+		
+		if($(".container").css('display')=='none'){
+			swal({
+				  title: "Are you sure want to Exit?",
+				  text: "Unsaved work will be lost !",
+				  type: "warning",
+				  width:100,
+				  height:100,
+				  showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "Yes",
+				  cancelButtonText: "No",
+				  closeOnConfirm: true
+				},
+				function(e){
+						if(e) navigator.app.exitApp();
 			});
+		}
+		else{
+			$(".container").css('display','none');
+			$("#myModal").modal('show');
+		}
     }
 	
 	
