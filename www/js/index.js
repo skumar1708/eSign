@@ -83,6 +83,17 @@ var app = {
 		}); */
 		 //screen.lockOrientation('landscape'); //this is the new line
 		 
+		  // Set AdMobAds options: 
+      admob.setOptions({
+        publisherId:          "ca-app-pub-2719433654677048/5324386012"  // Required 
+      });
+      
+      // Start showing banners (atomatic when autoShowBanner is set to true) 
+      admob.createBannerView();
+      
+      // Request interstitial (will present automatically when autoShowInterstitial is set to true) 
+      admob.requestInterstitialAd();
+		 
 		 window.adbuddiz.setUp(publisherKey);
 		
 		window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
@@ -107,21 +118,28 @@ var app = {
     }
 };
     function onBackKeyDown(e) {
-		swal({
-		  title: "Are you sure want to Exit?",
-		  text: "Unsaved work will be lost !",
-		  type: "warning",
-		  width:100,
-		  height:100,
-		  showCancelButton: true,
-		  confirmButtonColor: "#DD6B55",
-		  confirmButtonText: "Yes",
-		  cancelButtonText: "No",
-		  closeOnConfirm: true
-		},
-		function(e){
-				if(e) navigator.app.exitApp();
+		
+		if($(".container").css('display')=='none'){
+			swal({
+				  title: "Are you sure want to Exit?",
+				  text: "Unsaved work will be lost !",
+				  type: "warning",
+				  width:100,
+				  height:100,
+				  showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "Yes",
+				  cancelButtonText: "No",
+				  closeOnConfirm: true
+				},
+				function(e){
+						if(e) navigator.app.exitApp();
 			});
+		}
+		else{
+			$(".container").css('display','none');
+			$("#myModal").modal('show');
+		}
     }
 	
 	
