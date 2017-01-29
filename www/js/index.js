@@ -130,6 +130,9 @@ var app = {
 		else{
 			$(".container").css('display','none');
 			$("#myModal").modal('show');
+			var index = Math.floor(Math.random() * (qoutes.length));
+			var q = `" ${qoutes[index]} "`;
+				$('qoute').html(q);
 		}
     }
 	
