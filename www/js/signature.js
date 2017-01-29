@@ -304,6 +304,13 @@
 			});
       
 	});
+		$('.apps').on('click',function(){
+					console.log($(this).attr('id'));
+					
+					LaunchReview.launch($(this).attr('id'), function(){
+							console.log("Successfully launched store app");
+						});
+				})
 	$('#save').on('click',function(){
 		var date = new Date();
 		localStorage.setItem("EasyCan|"+date,canvas.toDataURL());
