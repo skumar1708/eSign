@@ -65,6 +65,14 @@
 		#sig-dataUrl {
 			width: 100%;
 		}
+		#morePanel{
+			    display: inline;
+				margin-top: 0px;
+				float: left;
+				left: -200px;
+				position: fixed;
+				transition: all 0.5s ease-in-out;
+		}
 	</style>
     <title>EasyCanvas</title>
 </head>
@@ -77,49 +85,37 @@
 		  <div class="modal-content">
 			
 			<div class="modal-body">
-			  <img src="img/easy-splash.png" id="appLogo"><span id="splashTitle">Easy Canvas</span>
+			  <img src="img/easy-splash.png" id="appLogo"></span><span id="splashTitle">Easy Canvas</span>
 			   <img src="img/canback.png" style="opacity:0;" id="marketingLogo">
 			  <div id="splashQoute"><qoute></qoute></div>
 			</div>
 			
 			
 			<div class="modal-footer">
-			 <!-- <button type="button" class="btn btn-success" id="launchTour">
-					 <span>Launch Tour</span> 
-			</button> -->
+					<div id="morePanel">
+						<img src="img/af.png" class="apps" id="air.HelicopterGame">
+						<img src="img/heart.png" class="apps" id="air.HealthApp" >
+						<img src="img/limbo.png" class="apps" id="com.jyoshdevelopers.limbogini">
+						<img src="img/dfy-pink.png" class="apps" id="com.doodlefy.android">
+						<img src="img/dfy-orange.png" class="apps" id="com.doodlefy.android">
+					</div>
+					 <img src="img/plus.png" class="pull-left" id="more">
+			
 			 <button type="button" class="btn btn-success" id="launchCan">
 					 <span>Launch Canvas</span> 
 			</button>
-			<!-- <p><button onclick="window.adbuddiz.preloadInterstitialAd();">preloadInterstitialAd</button></p>
-			<p><button onclick="window.adbuddiz.showInterstitialAd();">showInterstitialAd</button></p>
-			<br>
-			<p><button onclick="window.adbuddiz.preloadRewardedVideoAd();">preloadRewardedVideoAd</button></p>
-			<p><button onclick="window.adbuddiz.showRewardedVideoAd();">showRewardedVideoAd</button></p>
-			<br>
-			<p><button onclick="alert(window.adbuddiz.loadedInterstitialAd());">loadedInterstitialAd</button></p>
-			<p><button onclick="alert(window.adbuddiz.loadedRewardedVideoAd());">loadedRewardedVideoAd</button></p>
-			<br>
-			<p><button onclick="alert(window.adbuddiz.isShowingInterstitialAd());">isShowingInterstitialAd</button></p>
-			<p><button onclick="alert(window.adbuddiz.isShowingRewardedVideoAd());">isShowingRewardedVideoAd</button></p> -->
 			</div>
 		  </div>
 		  
 		</div>
-	  </div>
+	 </div>
 	
-<!-- <img class="toggle" src="localStorage.getItem(localStorage.key(0))" onclick="toggle_sidebar()" style="position: fixed; right: 10px; top: 10px" /> -->
         <div id="sidebar">
             <ul id="savedItems" class="nav nav-pills nav-stacked">
 				
 			  </ul>
         </div> 
    <div class="container" style="display:none;">
-		<!-- <div class="row">
-			<div class="col-md-12">
-				<h1>E-Signature</h1>
-				<p>Sign in the canvas below and save your signature as an image!</p>
-			</div>
-		</div> -->
 		<div class="row" style="overflow-y:hidden !important;">
 			<div class="col-md-12">
 		 		<canvas id="sig-canvas" width="560" height="260">
@@ -230,7 +226,21 @@
                 sidebar.style.left = "-268px";
             }
         }
-		
+			$('#more').on('click',function(){
+				if($('#morePanel').css('left') == '-200px'){
+						$('#morePanel').css('left','55px');
+				}else{
+					$('#morePanel').css('left','-200px');
+				}
+			});
+			
+			$('.apps').on('click',function(){
+					console.log($(this).attr('id'));
+					
+					LaunchReview.launch($(this).attr('id'), function(){
+							console.log("Successfully launched store app");
+						});
+				})
 		//function hide_sidebar()
        // {
        //     var sidebar = document.getElementById("sidebar");
@@ -244,7 +254,7 @@
     </script>
 </body>
 <script>
-		$(document).ready(function(){
+		$(document).ready(function(){	
 				var qoutes = [
 						"Painting is just another way of keeping a diary.",
 						"I dream a lot. I do more painting when I'm not painting.It's in the subconscious.",
@@ -259,7 +269,6 @@
 			var index = Math.floor(Math.random() * (qoutes.length));
 			var q = `" ${qoutes[index]} "`;
 				$("#myModal").modal();
-				//$("#myModalQoute").modal();
 				$('qoute').html(q);
 				
 				$('#myModal').attr('width',$(window).width()-40);
@@ -268,6 +277,7 @@
 				
 				
 				$('#launchCan').on('click',function(){
+				alert($("#myModal").modal('hide'));
 					$("#myModal").modal('hide');
 					$(".container").css('display',' ');
 				
