@@ -20,6 +20,7 @@
 	   <plugin name="cordova-plugin-payment-iap" source="npm" spec="~2.0.52" />
 	   <plugin name="cordova-launch-review" source="npm" spec="~1.0.3" />
 	  <plugin name="cordova-plugin-ad-adbuddiz" source="npm" spec="~1.0.45" />
+	<plugin name="cordova-plugin-ad-adbuddiz" source="npm"/>
    <!--  <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
