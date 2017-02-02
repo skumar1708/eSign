@@ -420,6 +420,27 @@
 			}
 		);
 	});
+	
+	$('.upload').on('change',function(){
+				 if (this.files && this.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function imageIsLoaded(e) {
+						
+										var canvas = document.getElementById('sig-canvas');
+										var context = canvas.getContext('2d');
+										// load image from data url
+										var imageObj = new Image();
+										imageObj.onload = function() {
+										  context.drawImage(this, 0, 0,canvas.width,canvas.height);
+										};
+
+										imageObj.src = e.target.result;
+										//$('#myImg').attr('src', e.target.result);
+									};
+					reader.readAsDataURL(this.files[0]);
+				}
+	});
+			
 	// Allow for animation
 	(function drawLoop () {
 		requestAnimFrame(drawLoop);
