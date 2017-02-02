@@ -76,6 +76,22 @@
 		#more{
 			transition: all 0.6s;
 		}
+		
+		.fileUpload {
+			position: relative;
+			overflow: hidden;
+		}
+		.fileUpload input.upload {
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin: 0;
+			padding: 0;
+			font-size: 20px;
+			cursor: pointer;
+			opacity: 0;
+			filter: alpha(opacity=0);
+		}
 	</style>
     <title>EasyCanvas</title>
 </head>
@@ -103,9 +119,9 @@
 						<img src="img/dfy-orange.png" class="apps" id="com.doodlefy.android">
 					</div>
 					 <img src="img/plus.png" class="pull-left" id="more">
-			
 			 <button type="button" class="btn btn-success" id="launchCan">
 					 <span>Launch Canvas</span> 
+					 
 			</button>
 			</div>
 		  </div>
@@ -156,7 +172,11 @@
 				 <input type="image" src="img/export.png" class="btn btn-default pull-right" id="save" style="border:2px solid grey;"> 
 				 <input type="image" src="img/share.png" class="btn btn-default pull-right" id="share" style="border:2px solid grey;"> 
 				 <input type="image" src="img/list.png" class="btn btn-default pull-right" id="list" onclick="toggle_sidebar(event)"  style="border:2px solid grey;"> 
-				  <input type="image" src="img/gallery.png" class="btn btn-default pull-right" id="gallery"  style="border:2px solid grey;"> 
+				 <div class="fileUpload btn btn-default pull-right" style="border:2px solid grey;height:32px;">
+					<img src="img/gallery.png" style="vertical-align:top;">
+					<input type="file" class="upload" />
+				</div>
+				  
 				
 			</div>
 		</div>
