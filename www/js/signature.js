@@ -406,7 +406,8 @@
 	});
 	
 	$('#gallery').on('click',function(){
-		window.imagePicker.getPictures(
+		alert('gflvivk');
+		window.ImagePicker.getPictures(
 			function(results) {
 				for (var i = 0; i < results.length; i++) {
 					alert('Image URI: ' + results[i]);
