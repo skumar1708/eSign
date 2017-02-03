@@ -171,15 +171,19 @@
 				<input type="image" src="img/eraser.png" class="btn btn-default" id="erase" style="border:2px solid grey;">
 				 <input type="image" src="img/export.png" class="btn btn-default pull-right" id="save" style="border:2px solid grey;"> 
 				 <input type="image" src="img/share.png" class="btn btn-default pull-right" id="share" style="border:2px solid grey;"> 
-				 <input type="image" src="img/list.png" class="btn btn-default pull-right" id="list" onclick="toggle_sidebar(event)"  style="border:2px solid grey;"> 
-				 <div class="fileUpload btn btn-default pull-right" style="border:2px solid grey;height:32px;">
-					<img src="img/gallery.png" style="vertical-align:top;">
-					<input type="file" class="upload" />
-				</div>
+				 <input type="image" src="img/list.png" class="btn btn-default pull-right" id="list" onclick="toggle_sidebar(event)" style="border:2px solid grey;"> 
+				 <input type="image" src="img/more-up.png" class="btn btn-default pull-right" id="more-up" style="border:2px solid grey;"> 
 				  
 				
 			</div>
 		</div>
+				<div id="uploadContainer" style="display:none;">
+					 <input type="image" src="img/camera.png" class="btn btn-default pull-right" id="cam"  style="border:2px solid grey;padding:25px;border-radius: 58px;"> 
+					 <div class="fileUpload btn btn-default pull-right" style="border:2px solid grey;margin-right:62px;border-radius: 58px;padding:25px;">
+						<img src="img/gallery-big.png" style="vertical-align:top;">
+						<input type="file" class="upload" style="height: 142px;width: 114px;"/>
+					</div>
+				</div>
 				<div id="rsContainer" style="display:none;">
 				  <input type="range" name="strokeRange" min="0" max="10" value="2" data-orientation="vertical"/>
 				</div>
@@ -226,11 +230,20 @@
 	$('#stroke').on('click',function(){
 		$('#rsContainer').toggle();
 		if($('#rsContainerOpacity').is( ":visible" ))$('#rsContainerOpacity').toggle();
+		if($('#uploadContainer').is( ":visible" ))$('#uploadContainer').toggle();
+        
+	});
+	$('#more-up').on('click',function(){
+		console.log('toggled');
+		$('#uploadContainer').toggle();
+		if($('#rsContainerOpacity').is( ":visible" ))$('#rsContainerOpacity').toggle();
+		if($('#rsContainer').is( ":visible" ))$('#rsContainer').toggle();
         
 	});
 	$('#opacity').on('click',function(){
 		$('#rsContainerOpacity').toggle();
 		if($('#rsContainer').is( ":visible" ))$('#rsContainer').toggle();
+		if($('#uploadContainer').is( ":visible" ))$('#uploadContainer').toggle();
         
 	});
 		$('#rsContainer').hide();
