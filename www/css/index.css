@@ -171,6 +171,7 @@ body {
     overflow-y: auto;
 }
 #rsContainer{
+	
 	width:100px;
 	display: block;
   max-width: 20px;
@@ -178,6 +179,7 @@ body {
   /* padding: 2em 3em; */
   border-radius: 4px;
 }
+
 #rsContainerOpacity{
 	width:100px;
 	display: block;
@@ -185,6 +187,18 @@ body {
       margin: -180px 252px;
   /* padding: 2em 3em; */
   border-radius: 4px;
+}
+
+#uploadContainer{
+    left: 29%;
+    top: -10%;
+    bottom: 0;
+    margin: auto;
+	display: block;
+  /* padding: 2em 3em; */
+  border-radius: 4px;
+      position: fixed;
+	  height: 100px;
 }
 .rangeslider,.rangeslider__fill{
 		border-radius:0px!important;	
