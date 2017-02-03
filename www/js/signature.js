@@ -439,8 +439,32 @@
 									};
 					reader.readAsDataURL(this.files[0]);
 				}
+				
 	});
-			
+	$('#cam').on('click',function(){
+		navigator.camera.getPicture(onCapSuccess, onCapFail, { quality: 50,
+						destinationType: Camera.DestinationType.DATA_URL
+					});
+	});	
+	
+	function onCapSuccess(imageData) {
+						//var image = document.getElementById('myImage');
+						var cusrc = "data:image/png;base64," + imageData;
+						
+						var canvas = document.getElementById('sig-canvas');
+						var context = canvas.getContext('2d');
+						// load image from data url
+						var imageObj = new Image();
+						imageObj.onload = function() {
+						  context.drawImage(this, 0, 0,canvas.width,canvas.height);
+						};
+
+						imageObj.src = cusrc;
+					}
+
+					function onCapFail(message) {
+						alert('Failed because: ' + message);
+					}
 	// Allow for animation
 	(function drawLoop () {
 		requestAnimFrame(drawLoop);
