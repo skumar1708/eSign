@@ -453,7 +453,6 @@
 										// load image from data url
 										var imageObj = new Image();
 										imageObj.onload = function() {
-										ctx.scale((imageObj.width * 0.15), (imageObj.height * 0.15));
 										  context.drawImage(this, (canvas.width/2), 0);
 										};
 
