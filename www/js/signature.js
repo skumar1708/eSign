@@ -50,6 +50,7 @@
 	var mousePos = { x:0, y:0 };
 	var lastPos = mousePos;
 	canvas.addEventListener("mousedown", function (e) {
+		CANVAS_GLOBAL_LAST_URL = canvas.toDataURL();
 		isDirty = true;
 		drawing = true;
 		lastPos = getMousePos(canvas, e);
@@ -162,12 +163,26 @@
 	}
 
 	function clearCanvas() {
-		canvas.width = canvas.width;
-		ctx = canvas.getContext("2d");
-		ctx.strokeStyle = $('#penButton').css('background-color').replace('rgb','rgba').replace(')',','+opacity/100+')');;
-		ctx.lineWidth = lineWidth;
-		ctx.fillStyle = $('#tButton').css('background-color');
-		ctx.fillRect(0,0,canvas.width,canvas.height);
+		swal({
+		  title: "Clear Canvas ?",
+		  text: "All unsaved work will be lost.",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "Yes",
+		  cancelButtonText: "No",
+		  closeOnConfirm: true
+		},
+		function(e){
+				if(e){
+					canvas.width = canvas.width;
+					ctx = canvas.getContext("2d");
+					ctx.strokeStyle = $('#penButton').css('background-color').replace('rgb','rgba').replace(')',','+opacity/100+')');;
+					ctx.lineWidth = lineWidth;
+					ctx.fillStyle = $('#tButton').css('background-color');
+					ctx.fillRect(0,0,canvas.width,canvas.height);
+				}
+			});
 	}
 	
 	var $elementO = $('input[name="opacityRange"]');
@@ -404,7 +419,14 @@
 		//ctx.stroke();
 		  
 	});
-	
+	$('#redo').on('click',function(){
+		var imageObj = new Image();
+				imageObj.onload = function() {
+				  ctx.drawImage(this, 0, 0);
+				};
+
+				imageObj.src = CANVAS_GLOBAL_LAST_URL; 
+	});
 	$('#gallery').on('click',function(){
 		alert('gflvivk');
 		window.ImagePicker.getPictures(
@@ -431,7 +453,8 @@
 										// load image from data url
 										var imageObj = new Image();
 										imageObj.onload = function() {
-										  context.drawImage(this, 0, 0,canvas.width,canvas.height);
+										ctx.scale((imageObj.width * 0.15), (imageObj.height * 0.15));
+										  context.drawImage(this, (canvas.width/2), 0);
 										};
 
 										imageObj.src = e.target.result;
