@@ -86,12 +86,12 @@ var app = {
 		 
 		  // Set AdMobAds options: 
 		 
-		 window.adbuddiz.setUp(publisherKey);
+		 //window.adbuddiz.setUp(publisherKey);
 		
-		window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
+		//window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
 		//window.adbuddiz.showInterstitialAd();
 
-		window.adbuddiz.preloadRewardedVideoAd();//option, download ad previously for fast show
+		//window.adbuddiz.preloadRewardedVideoAd();//option, download ad previously for fast show
 		//window.adbuddiz.showRewardedVideoAd();
 		
 		document.addEventListener("backbutton", onBackKeyDown, true);
