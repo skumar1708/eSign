@@ -51,6 +51,9 @@
 	var lastPos = mousePos;
 	canvas.addEventListener("mousedown", function (e) {
 		CANVAS_GLOBAL_LAST_URL = canvas.toDataURL();
+		if($('#rsContainerOpacity').is( ":visible" ))$('#rsContainerOpacity').toggle();
+		if($('#uploadContainer').is( ":visible" ))$('#uploadContainer').toggle();
+		if($('#rsContainer').is( ":visible" ))$('#rsContainer').toggle();
 		isDirty = true;
 		drawing = true;
 		lastPos = getMousePos(canvas, e);
@@ -181,6 +184,7 @@
 					ctx.lineWidth = lineWidth;
 					ctx.fillStyle = $('#tButton').css('background-color');
 					ctx.fillRect(0,0,canvas.width,canvas.height);
+					CANVAS_GLOBAL_LAST_URL = "";
 				}
 			});
 	}
@@ -456,7 +460,7 @@
 										imageObj.onload = function() {
 										//ctx.scale((imageObj.width * 0.15), (imageObj.height * 0.15));
 										  context.drawImage(this, 0, 0,canvas.width,canvas.height);
-										  
+										  if($('#uploadContainer').is( ":visible" ))$('#uploadContainer').toggle();
 										  console.log('imageObj is',this.width +"   "+this.height);
 										};
 
@@ -471,6 +475,7 @@
 		navigator.camera.getPicture(onCapSuccess, onCapFail, { quality: 50,
 						destinationType: Camera.DestinationType.DATA_URL
 					});
+					
 	});	
 	
 	function onCapSuccess(imageData) {
@@ -483,13 +488,15 @@
 						var imageObj = new Image();
 						imageObj.onload = function() {
 						  context.drawImage(this, 0, 0,canvas.width,canvas.height);
+						  if($('#uploadContainer').is( ":visible" ))$('#uploadContainer').toggle();
 						};
 
 						imageObj.src = cusrc;
 					}
 
 					function onCapFail(message) {
-						alert('Failed because: ' + message);
+						//alert('Failed because: ' + message);
+						if($('#uploadContainer').is( ":visible" ))$('#uploadContainer').toggle();
 					}
 	// Allow for animation
 	(function drawLoop () {
