@@ -445,6 +445,7 @@
 	
 	$('.upload').on('change',function(){
 				 if (this.files && this.files[0]) {
+					 console.log("this.files[0].size",this.files[0].size);
 					var reader = new FileReader();
 					reader.onload = function imageIsLoaded(e) {
 						
@@ -453,8 +454,10 @@
 										// load image from data url
 										var imageObj = new Image();
 										imageObj.onload = function() {
-										ctx.scale((imageObj.width * 0.15), (imageObj.height * 0.15));
-										  context.drawImage(this, (canvas.width/2), 0);
+										//ctx.scale((imageObj.width * 0.15), (imageObj.height * 0.15));
+										  context.drawImage(this, 0, 0,canvas.width,canvas.height);
+										  
+										  console.log('imageObj is',this.width +"   "+this.height);
 										};
 
 										imageObj.src = e.target.result;
