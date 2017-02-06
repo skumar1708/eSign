@@ -351,7 +351,7 @@
 							console.log("Successfully launched store app");
 						});
 					}
-				else{window.adbuddiz.showInterstitialAd();}
+				//else{window.adbuddiz.showInterstitialAd();}
 			});
 		
 		var src = canvas.toDataURL();
