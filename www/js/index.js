@@ -199,7 +199,7 @@ var app = {
 	
 	},false);
 	var downloadCanvas = function(canvas) {
-					if(null !== localStorage.getItem('restorable')){
+					//if(null !== localStorage.getItem('restorable')){
 							window.canvas2ImagePlugin.saveImageDataToLibrary(
 							function(msg){
 								swal({
@@ -222,7 +222,7 @@ var app = {
 							},
 							canvas
 						);
-					}
+				/* 	}
 					else{
 						swal({
 									  title: "Get Pro",
@@ -239,6 +239,6 @@ var app = {
 											purchaseProduct("product_easy_export");
 										}
 									});
-				}
+				} */
 		 
 	}
