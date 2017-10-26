@@ -89,10 +89,11 @@ var app = {
 		 
 		  // Set AdMobAds options: 
 		 
-		 //window.adbuddiz.setUp(publisherKey);
+		 window.adbuddiz.setUp(publisherKey);
 		
-		//window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
-		//window.adbuddiz.showInterstitialAd();
+		window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
+		window.adbuddiz.showInterstitialAd();
+		window.adbuddiz.cacheAds();
 
 		//window.adbuddiz.preloadRewardedVideoAd();//option, download ad previously for fast show
 		//window.adbuddiz.showRewardedVideoAd();
@@ -113,7 +114,7 @@ var app = {
     }
 };
     function onBackKeyDown(e) {
-		admob.createBannerView();
+		 window.adbuddiz.showAd();
 		if($(".container").css('display')=='none'){
 			swal({
 				  title: "Are you sure want to Exit?",
