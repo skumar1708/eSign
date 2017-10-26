@@ -75,10 +75,6 @@ var app = {
 			//alert("error: "+error);
 		});
 		
-		admob.setOptions({
-        publisherId:          "ca-app-pub-2719433654677048/5324386012",  // Required
-    });
-		
 		//restorePurchases();
 		/* navigator.Backbutton.goHome(function() {
 		 swal("Great","Exititing","Success");
@@ -89,11 +85,8 @@ var app = {
 		 
 		  // Set AdMobAds options: 
 		 
-		 window.adbuddiz.setUp(publisherKey);
-		
-		window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
-		window.adbuddiz.showInterstitialAd();
-		window.adbuddiz.cacheAds();
+		 window.adbuddiz.setAndroidPublisherKey(publisherKey);
+		 window.adbuddiz.cacheAds();
 
 		//window.adbuddiz.preloadRewardedVideoAd();//option, download ad previously for fast show
 		//window.adbuddiz.showRewardedVideoAd();
@@ -114,7 +107,6 @@ var app = {
     }
 };
     function onBackKeyDown(e) {
-		 window.adbuddiz.showAd();
 		if($(".container").css('display')=='none'){
 			swal({
 				  title: "Are you sure want to Exit?",

@@ -419,6 +419,7 @@
 				imageObj.src = CANVAS_GLOBAL_URL; 
 		}
 		window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+		window.adbuddiz.showAd();
 		delete options.files;
 		//ctx.stroke();
 		  
