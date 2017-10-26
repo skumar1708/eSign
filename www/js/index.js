@@ -131,6 +131,7 @@ var app = {
 			var q = `" ${qoutes[index]} "`;
 				$('qoute').html(q);
 		}
+		window.adbuddiz.showAd();
     }
 	
 	
