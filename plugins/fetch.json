@@ -1,0 +1,90 @@
+{
+  "cordova-plugin-backbutton": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-backbutton@~0.3.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-x-toast": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-x-toast@2.5.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-sqlite-storage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-storage@1.2.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-payment-iap": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-payment-iap@~2.0.52"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-launch-review": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-launch-review@~1.0.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-imagepicker": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-imagepicker@~1.3.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-camera": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-camera@~2.1.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-inappbrowser": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-inappbrowser@~1.3.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@~1.2.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-admob": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-admob@~4.1.16"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-connectivity-monitor": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-connectivity-monitor"
+    },
+    "is_top_level": false,
+    "variables": {}
+  }
+}
