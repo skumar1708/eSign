@@ -75,6 +75,9 @@ var app = {
 			//alert("error: "+error);
 		});
 		
+		admob.setOptions({
+        publisherId:          "ca-app-pub-2719433654677048/5324386012",  // Required
+    });
 		
 		//restorePurchases();
 		/* navigator.Backbutton.goHome(function() {
@@ -110,7 +113,7 @@ var app = {
     }
 };
     function onBackKeyDown(e) {
-		
+		admob.createBannerView();
 		if($(".container").css('display')=='none'){
 			swal({
 				  title: "Are you sure want to Exit?",
