@@ -355,34 +355,14 @@
 			});
 		
 		var src = canvas.toDataURL();
-		console.log('images is ',localStorage.key(i));
-		//if(localStorage.key(i).indexOf('data:image')>-1){localStorage.removeItem(localStorage.key(i));}
 		$('#savedItems').append('<li class="active listcan"><a href="#" class="editA" style="float:left;"><img class="canImg" style="width:80px;height:40px;" src="'+src+'"><img src="img/edit.png" class="imgEdit pull-right"></a><a href="#" class="deleteA" id="'+id+'"style="float:right;"><img src="img/delete.png" class="imgDelete pull-right"></a></li>');
+		window.adbuddiz.showAd();
 	});
 	$('#share').on('click',function(){
-		//console.log(canvas.toDataURL("image/png"));
-		//ctx.font = "17px 'Indie Flower', cursive";
-		// Create gradient
-		/* var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-		gradient.addColorStop("0", "magenta");
-		gradient.addColorStop("0.5", "blue");
-		gradient.addColorStop("1.0", "red");
-		// Fill with gradient
-		ctx.fillStyle = gradient;
-		ctx.fillText("created by EasyCanvas", 10, 20); */
-		
 		   var c = document.getElementById("sig-canvas");
 			var ctx_tmp = c.getContext("2d");
 			var img = document.getElementById('marketingLogo');
-				/* img.onload = function() {
-					console.log("image onload");
-					console.log("CURRENT IS "+c.toDataURL("image/png"));
-				  ctx_tmp.drawImage(this, c.width-100, c.height-44,100,44);
-				}; */
-				ctx_tmp.drawImage(img, c.width-100, c.height-44,100,44);
-				//img.src = "img/canback.png";
-			
-		//window.plugins.toast.show('Hello there!', 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
+			ctx_tmp.drawImage(img, c.width-100, c.height-44,100,44);
 		 var data = c.toDataURL("image/png");
 		 console.log("CURRENT IS "+c.toDataURL("image/png"));
 		//console.log("GLOBAL URL IS  "+CANVAS_GLOBAL_URL);
@@ -433,7 +413,6 @@
 				imageObj.src = CANVAS_GLOBAL_LAST_URL; 
 	});
 	$('#gallery').on('click',function(){
-		alert('gflvivk');
 		window.ImagePicker.getPictures(
 			function(results) {
 				for (var i = 0; i < results.length; i++) {

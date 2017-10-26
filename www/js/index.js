@@ -234,6 +234,9 @@ var app = {
 										if(e && window.hasOwnProperty('purchaseProduct')){
 											purchaseProduct("product_easy_export");
 										}
+										else{
+											window.adbuddiz.showAd();
+										}
 									});
 				}
 		 
