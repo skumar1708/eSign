@@ -16,13 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var CANVAS_GLOBAL_URL = "";
-var CANVAS_GLOBAL_LAST_URL = "";
-var androidApplicationLicenseKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyWuTJQClo0zEUXsxqBtAfj1BeUUF6lvpNG6zzzHJcss3YWK6XUuegy/eUvJgDO0L1yY1xhcC/beyGXEW/is7Ua5DMPx+IzqUFFtrx/xp32c5JB27p6XajqsvqkVXBV76UQLnaO5afNVR4gQquuIS72MceH9D5x4nvbZOh1vtEBVhmCoXMXeZ4VvISQ3gxGuNXnMl/p0sWM6gb5qfN5YjLCGTU8BhpazBQnqu4dqGLlLokpMGGkMogh8/LrF7dSZfbeSsZcZkY9h15gsDzlc41lMGgbQ5EkKUbHxCQQKfdfrsFJEFiD0cmRC9jB9bu47M+p8F8lYIiAu3ICeH0WkmMwIDAQAB";
+ var CANVAS_GLOBAL_URL = "";
+  var CANVAS_GLOBAL_LAST_URL = "";
+ var androidApplicationLicenseKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyWuTJQClo0zEUXsxqBtAfj1BeUUF6lvpNG6zzzHJcss3YWK6XUuegy/eUvJgDO0L1yY1xhcC/beyGXEW/is7Ua5DMPx+IzqUFFtrx/xp32c5JB27p6XajqsvqkVXBV76UQLnaO5afNVR4gQquuIS72MceH9D5x4nvbZOh1vtEBVhmCoXMXeZ4VvISQ3gxGuNXnMl/p0sWM6gb5qfN5YjLCGTU8BhpazBQnqu4dqGLlLokpMGGkMogh8/LrF7dSZfbeSsZcZkY9h15gsDzlc41lMGgbQ5EkKUbHxCQQKfdfrsFJEFiD0cmRC9jB9bu47M+p8F8lYIiAu3ICeH0WkmMwIDAQAB";
 var productIds = "product_easy_export";
 var existing_purchases = [];
 var product_info = {};
-var publisherKey = "889e674c-6a74-4491-874a-90e8550561ae";
+ var publisherKey = "889e674c-6a74-4491-874a-90e8550561ae";
 var app = {
     // Application Constructor
     initialize: function() {
@@ -75,6 +75,10 @@ var app = {
 			//alert("error: "+error);
 		});
 		
+		admob.setOptions({
+        publisherId:          "ca-app-pub-2719433654677048/5324386012",  // Required
+    });
+		miAdmob (); 
 		//restorePurchases();
 		/* navigator.Backbutton.goHome(function() {
 		 swal("Great","Exititing","Success");
@@ -85,8 +89,10 @@ var app = {
 		 
 		  // Set AdMobAds options: 
 		 
-		 window.adbuddiz.setAndroidPublisherKey(publisherKey);
-		 window.adbuddiz.cacheAds();
+		 //window.adbuddiz.setUp(publisherKey);
+		
+		//window.adbuddiz.preloadInterstitialAd();//option, download ad previously for fast show
+		//window.adbuddiz.showInterstitialAd();
 
 		//window.adbuddiz.preloadRewardedVideoAd();//option, download ad previously for fast show
 		//window.adbuddiz.showRewardedVideoAd();
@@ -106,7 +112,10 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
     function onBackKeyDown(e) {
+		admob.createBannerView();
+		showAd(true);	
 		if($(".container").css('display')=='none'){
 			swal({
 				  title: "Are you sure want to Exit?",
@@ -131,7 +140,6 @@ var app = {
 			var q = `" ${qoutes[index]} "`;
 				$('qoute').html(q);
 		}
-		window.adbuddiz.showAd();
     }
 	
 	
@@ -234,9 +242,6 @@ var app = {
 									function(e){
 										if(e && window.hasOwnProperty('purchaseProduct')){
 											purchaseProduct("product_easy_export");
-										}
-										else{
-											window.adbuddiz.showAd();
 										}
 									});
 				}
