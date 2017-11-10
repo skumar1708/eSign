@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.js.easycan" version="1.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.js.easycan" version="1.1.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Easy Canvas</name>
     <description>
        Easy Canvass for drawing art,sign and many more
@@ -45,5 +45,6 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <plugin name="com.purplebrain.adbuddiz.sdk" source="npm"/>
+    <plugin name="cordova-admob" spec="~4.1.16" />
+    <plugin name="cordova-plugin-admob" spec="https://github.com/floatinghotpot/cordova-plugin-admob.git" />
 </widget>
