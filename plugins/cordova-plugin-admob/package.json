@@ -1,0 +1,133 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/floatinghotpot/cordova-plugin-admob.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/floatinghotpot/cordova-plugin-admob.git",
+        "spec": "git+https://github.com/floatinghotpot/cordova-plugin-admob.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:floatinghotpot/cordova-plugin-admob.git",
+          "sshUrl": "git+ssh://git@github.com/floatinghotpot/cordova-plugin-admob.git",
+          "httpsUrl": "git+https://github.com/floatinghotpot/cordova-plugin-admob.git",
+          "gitUrl": "git://github.com/floatinghotpot/cordova-plugin-admob.git",
+          "shortcut": "github:floatinghotpot/cordova-plugin-admob",
+          "directUrl": "https://raw.githubusercontent.com/floatinghotpot/cordova-plugin-admob/master/package.json"
+        }
+      },
+      "E:\\projects\\eSign\\eSign-revised"
+    ]
+  ],
+  "_from": "git+https://github.com/floatinghotpot/cordova-plugin-admob.git",
+  "_id": "cordova-plugin-admob@3.2.4",
+  "_inCache": true,
+  "_location": "/cordova-plugin-admob",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/floatinghotpot/cordova-plugin-admob.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/floatinghotpot/cordova-plugin-admob.git",
+    "spec": "git+https://github.com/floatinghotpot/cordova-plugin-admob.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:floatinghotpot/cordova-plugin-admob.git",
+      "sshUrl": "git+ssh://git@github.com/floatinghotpot/cordova-plugin-admob.git",
+      "httpsUrl": "git+https://github.com/floatinghotpot/cordova-plugin-admob.git",
+      "gitUrl": "git://github.com/floatinghotpot/cordova-plugin-admob.git",
+      "shortcut": "github:floatinghotpot/cordova-plugin-admob",
+      "directUrl": "https://raw.githubusercontent.com/floatinghotpot/cordova-plugin-admob/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/floatinghotpot/cordova-plugin-admob.git#9b1f8e01817358399027dc89ffb1f3dea934f84d",
+  "_shasum": "111c2a63a95ec37ba9be30f16399e3475f03ee38",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/floatinghotpot/cordova-plugin-admob.git",
+  "_where": "E:\\projects\\eSign\\eSign-revised",
+  "author": {
+    "name": "Raymond Xie"
+  },
+  "bugs": {
+    "url": "https://github.com/floatinghotpot/cordova-plugin-admob/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-admob",
+    "platforms": [
+      "android",
+      "ios",
+      "wp8",
+      "windows"
+    ]
+  },
+  "dependencies": {},
+  "description": "The FASTEST and EASIEST TO USE Cordova Admob plugin for Android, iOS and Windows phone. Pure open source without any traffic sharing. Allows preloading and automatic loading of interstitials and banners plus more. Works with Cordova, Phonegap, Intel XDK/Crosswalk, Ionic, Meteor and more.",
+  "devDependencies": {},
+  "gitHead": "9b1f8e01817358399027dc89ffb1f3dea934f84d",
+  "homepage": "https://github.com/floatinghotpot/cordova-plugin-admob#readme",
+  "keywords": [
+    "cordova",
+    "admob",
+    "plugin",
+    "phonegap",
+    "intel-xdk",
+    "intel",
+    "xdk",
+    "crosswalk",
+    "ionic",
+    "meteor",
+    "ad",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-wp8",
+    "cordova-amazon-fireos",
+    "google",
+    "ads",
+    "eclipse",
+    "android-studio",
+    "simple",
+    "easy",
+    "android",
+    "ios",
+    "windows",
+    "phonegap",
+    "monetization",
+    "monetisation",
+    "money",
+    "banner",
+    "interstitial",
+    "advertisement",
+    "advertising",
+    "earn",
+    "cordova-admob",
+    "admobpro",
+    "iad",
+    "flurry",
+    "mobfox",
+    "mopub",
+    "inmobi",
+    "chartboost",
+    "domob",
+    "rjfun"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-admob",
+  "optionalDependencies": {},
+  "readme": "## Cordova Plugin for AdMob, Open Source Project\r\n\r\nThe FASTEST and EASIEST TO USE Cordova Admob plugin for Android, iOS and Windows phone.\r\n\r\nSimple and easy plugin to monetize your HTML5 hybrid apps and games.\r\n\r\nUsage:\r\n- Create your app\r\n\r\n```bash\r\ncordova create hallo com.example.hello HelloWorld\r\ncd hallo\r\ncordova platform add android\r\n```\r\n\r\n- Add the plugin\r\n```bash\r\ncordova plugin add cordova-plugin-admob\r\n```\r\n\r\nOR\r\n```bash\r\ncordova plugin add https://github.com/floatinghotpot/cordova-plugin-admob\r\n```\r\n\r\nExample Code:\r\n```javascript\r\n        window.plugins.AdMob.setOptions( {\r\n          publisherId: admobid.banner,\r\n          interstitialAdId: admobid.interstitial,\r\n          bannerAtTop: false, // set to true, to put banner at top\r\n          overlap: false, // set to true, to allow banner overlap webview\r\n          offsetTopBar: false, // set to true to avoid ios7 status bar overlap\r\n          isTesting: false, // receiving test ad\r\n          autoShow: true // auto show interstitial ad when loaded\r\n        });\r\n        // display the banner at startup\r\n        window.plugins.AdMob.createBannerView();\r\n        \r\n        // create interstitial ad\r\n        window.plugins.AdMob.createInterstitialView();\r\n        window.plugins.AdMob.showInterstitialAd(\r\n          true, \r\n          function(){},\r\n          function(e){alert(JSON.stringify(e));}\r\n        );\r\n```\r\n\r\nSee full index.html: https://github.com/floatinghotpot/cordova-plugin-admob/blob/master/test/index.html\r\n\r\nNote: This plugin is quite stable, and will not be evolved any more, except upgrade AdMob SDK.\r\n\r\n## AdMob Basic vs Pro\r\n\r\nIf you want to use more powerful and new features, please use the pro version instead. The totoally re-designed **[AdMob PluginPro](https://github.com/floatinghotpot/cordova-admob-pro)** is proved much better and more than welcome by Cordova APP/game developers. \r\n\r\nAs announced by Cordova team, the plugins registry is being migrated to npm, you can find [all plugins by Raymond here](https://www.npmjs.com/~floatinghotpot).\r\n\r\n![ScreenShot](https://github.com/floatinghotpot/cordova-plugin-admob/raw/master/docs/pro_vs_basic.png)\r\n\r\n## Credits\r\n\r\nThis plugin was mainly maintained by Raymond Xie, and also thanks to following contributors:\r\n\r\n* @jumin-zhu, added interstitial support for Android.\r\n* @fersingb, added interstitial support for iOS.\r\n* @ihshim523, added initial WP8 support.\r\n* @AlexB71, improved WP8 support.\r\n* And, bugfix patches from @chrisschaub, @jmelvin, @mbektchiev, @grahamkennery, @bastaware, @EddyVerbruggen, @codebykevin, @codebykevin, @zahhak.\r\n\r\nThis project is fully open source, and no ad traffic sharing any more.\r\n\r\n## More\r\n\r\nMore free projects by Raymond Xie, find them on npm: \r\nhttps://www.npmjs.com/~floatinghotpot\r\n\r\n\r\n\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/floatinghotpot/cordova-plugin-admob.git"
+  },
+  "version": "3.2.4"
+}
