@@ -75,9 +75,9 @@ var app = {
 			//alert("error: "+error);
 		});
 		
-		admob.setOptions({
-        publisherId:          "ca-app-pub-2719433654677048/5324386012",  // Required
-    });
+		//admob.setOptions({
+        //publisherId:          "ca-app-pub-2719433654677048/5324386012",  // Required
+    //});
 		miAdmob (); 
 		//restorePurchases();
 		/* navigator.Backbutton.goHome(function() {
