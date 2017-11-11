@@ -114,7 +114,7 @@ var app = {
 };
 
     function onBackKeyDown(e) {
-		admob.createBannerView();
+		//admob.createBannerView();
 		showAd(true);	
 		if($(".container").css('display')=='none'){
 			swal({
