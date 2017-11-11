@@ -1,6 +1,6 @@
 function miAdmob() { 
       var admob_ios_key = 'admob ios key here'; //put your admob IOS id here 
-      var admob_android_key = 'admob android key here'; //put your admob ANDROID id here 
+      var admob_android_key = 'pub-2600066140104651'; //put your admob ANDROID id here 
       var adId = (navigator.userAgent.indexOf('Android') &gt;=0) ? 
       admob_android_key : admob_ios_key; //Detects if the mobile is ios or android and puts the id you need
        
