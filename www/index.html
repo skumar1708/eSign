@@ -87,6 +87,7 @@
 			  <img src="img/easy-splash.png" id="appLogo"></span><span id="splashTitle">Easy Canvas</span>
 			   <img src="img/canback.png" style="opacity:0;" id="marketingLogo">
 			  <div id="splashQoute"><qoute></qoute></div>
+			  <script type="text/javascript">amzn_assoc_ad_type ="responsive_search_widget"; amzn_assoc_tracking_id ="itbhusk-21"; amzn_assoc_marketplace ="amazon"; amzn_assoc_region ="IN"; amzn_assoc_placement =""; amzn_assoc_search_type = "search_widget";amzn_assoc_width ="auto"; amzn_assoc_height ="auto"; amzn_assoc_default_search_category =""; amzn_assoc_default_search_key ="";amzn_assoc_theme ="light"; amzn_assoc_bg_color ="FFFFFF"; </script><script src="//z-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1&Marketplace=IN"></script>
 			</div>
 			
 			
@@ -154,7 +155,8 @@
 				 <input type="image" src="img/list.png" class="btn btn-default pull-right" id="list" onclick="toggle_sidebar(event)" style="border:2px solid grey;"> 
 				 <input type="image" src="img/more-up.png" class="btn btn-default pull-right" id="more-up" style="border:2px solid grey;"> 
 				  <input type="image" src="img/refresh.png" class="btn btn-default pull-right" id="redo" style="border:2px solid grey;"> 
-				  
+				  <input type="image" src="img/ti.png" class="btn btn-default" id="textin" style="border:2px solid grey;"> 
+				  <input type="text" id="myTi"/>
 				
 			</div>
 		</div>
@@ -188,7 +190,8 @@
 	</div>
     <script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="js/admob.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/canvastextinput.js"></script>
     <script type="text/javascript">
         app.initialize();
 		//localStorage.removeItem('getfirst')
@@ -221,12 +224,12 @@
 		if($('#rsContainer').is( ":visible" ))$('#rsContainer').toggle();
         
 	});
-	$('#opacity').on('click',function(){
-		$('#rsContainerOpacity').toggle();
-		if($('#rsContainer').is( ":visible" ))$('#rsContainer').toggle();
-		if($('#uploadContainer').is( ":visible" ))$('#uploadContainer').toggle();
-        
-	});
+		$('#opacity').on('click',function(){
+			$('#rsContainerOpacity').toggle();
+			if($('#rsContainer').is( ":visible" ))$('#rsContainer').toggle();
+			if($('#uploadContainer').is( ":visible" ))$('#uploadContainer').toggle();
+			
+		});
 		$('#rsContainer').hide();
 		$('#rsContainerOpacity').hide();
         function toggle_sidebar(e)
