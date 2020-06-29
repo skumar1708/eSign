@@ -1,1 +1,1 @@
-[link](url){:target="_blank"}
+[link: http://somelink.com/?target=_blank]
