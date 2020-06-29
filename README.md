@@ -1,2 +1,1 @@
-Great grand gambler  walking on goose-grown gtpsy !!!
-..stay tight.
+[link](url){:target="_blank"}
